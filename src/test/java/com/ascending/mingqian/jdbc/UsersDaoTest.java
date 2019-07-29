@@ -34,7 +34,7 @@ public class UsersDaoTest {
             System.out.println(u.getId()+" "+u.getName()+" "+u.getPassword());
 
         }
-        //Assert.assertEquals(expectedNumOfUsers,users.size());
+        Assert.assertEquals(expectedNumOfUsers,users.size());
     }
 
     //@Ignore
@@ -47,6 +47,7 @@ public class UsersDaoTest {
         usersDao.save(users1);
         logger.debug(String.format("the user %s was inserted into the table.",users1.toString()));
         logger.info("test");
+        //branch1
     }
 
 }
