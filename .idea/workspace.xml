@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1efb9d4d-ec7d-4ab2-8d26-fcc1faac1f03" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ascending/mingqian/jdbc/RecordDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ascending/mingqian/jdbc/RecordDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/DemoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ascending/mingqian/jdbc/UsersDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ascending/mingqian/jdbc/UsersDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/AccountInfoDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/AccountInfoDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/RecordDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/RecordDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/TestAll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/TestAll.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ascending/mingqian/model/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ascending/mingqian/model/Users.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/UsersDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/UsersDaoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ascending/mingqian/jdbc/UsersDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ascending/mingqian/jdbc/UsersDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.ascending.mingqian.jdbc.TestAll.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.ascending.mingqian.jdbc.TestAll.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.ascending.mingqian.jdbc.TestAll.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.ascending.mingqian.jdbc.TestAll.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/ascending/mingqian/jdbc/UsersDaoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/ascending/mingqian/jdbc/UsersDaoTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -25,35 +29,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="43" column="17" lean-forward="true" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/UsersDaoTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#238#239#0" expanded="true" />
-                <element signature="e#259#260#0" expanded="true" />
-                <element signature="e#248#249#0" expanded="true" />
-                <element signature="e#289#290#0" expanded="true" />
-                <element signature="e#352#353#0" expanded="true" />
-                <element signature="e#377#378#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="307">
+              <caret line="41" column="17" lean-forward="true" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11.jar!/org/junit/runners/model/FrameworkMethod.class">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/UsersDaoTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="46" selection-start-line="46" selection-end-line="46" />
+            <state relative-caret-position="276">
+              <caret line="29" column="31" lean-forward="true" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -61,8 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/TestAll.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+            <state relative-caret-position="180">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -70,14 +59,34 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/mingqian/model/AccountInfo.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/DemoTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+            <state relative-caret-position="240">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
               <folding>
-                <element signature="e#197#198#0" expanded="true" />
-                <element signature="e#222#223#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#330#331#0" expanded="true" />
+                <element signature="e#351#352#0" expanded="true" />
+                <element signature="e#525#526#0" expanded="true" />
+                <element signature="e#546#547#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/mingqian/model/Users.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-31">
+              <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+              <folding>
+                <element signature="e#471#472#0" expanded="true" />
+                <element signature="e#516#517#0" expanded="true" />
+                <element signature="e#158#159#0" expanded="true" />
+                <element signature="e#183#184#0" expanded="true" />
+                <element signature="e#213#214#0" expanded="true" />
+                <element signature="e#240#241#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -86,18 +95,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/RecordDaoTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="57" column="5" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="57" selection-end-column="5" />
+            <state relative-caret-position="150">
+              <caret line="10" column="69" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="69" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#366#367#0" expanded="true" />
-                <element signature="e#432#433#0" expanded="true" />
                 <element signature="e#489#490#0" expanded="true" />
-                <element signature="e#555#556#0" expanded="true" />
-                <element signature="e#469#470#0" expanded="true" />
-                <element signature="e#510#511#0" expanded="true" />
-                <element signature="e#549#550#0" expanded="true" />
-                <element signature="e#580#581#0" expanded="true" />
+                <element signature="e#553#554#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -106,18 +109,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/AccountInfoDaoTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-203">
+            <state relative-caret-position="60">
               <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#438#439#0" expanded="true" />
-                <element signature="e#504#505#0" expanded="true" />
-                <element signature="e#558#559#0" expanded="true" />
-                <element signature="e#622#623#0" expanded="true" />
-                <element signature="e#659#660#0" expanded="true" />
-                <element signature="e#712#713#0" expanded="true" />
-                <element signature="e#751#752#0" expanded="true" />
-                <element signature="e#788#789#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -126,8 +121,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/mingqian/jdbc/AccountInfoDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1695">
-              <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
+            <state relative-caret-position="1635">
+              <caret line="113" selection-start-line="113" selection-end-line="113" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -138,8 +133,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/mingqian/jdbc/RecordDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="123" column="32" lean-forward="true" selection-start-line="115" selection-start-column="6" selection-end-line="123" selection-end-column="32" />
+            <state relative-caret-position="1740">
+              <caret line="123" column="32" selection-start-line="115" selection-start-column="6" selection-end-line="123" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -150,8 +145,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/mingqian/jdbc/UsersDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="161" column="32" lean-forward="true" selection-start-line="156" selection-start-column="10" selection-end-line="161" selection-end-column="32" />
+            <state relative-caret-position="105">
+              <caret line="162" lean-forward="true" selection-start-line="162" selection-end-line="162" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#save#0;class#UsersDao#0" />
@@ -195,20 +190,21 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/ascending/mingqian/model/Users.java" />
         <option value="$PROJECT_DIR$/src/main/resources/db/migration/V1__create_all_tables.sql" />
         <option value="$PROJECT_DIR$/src/main/resources/db/migration/V1.1__insert_data_into_tables.sql" />
         <option value="$PROJECT_DIR$/src/main/java/com/ascending/mingqian/model/AccountInfo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ascending/mingqian/model/Record.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/ascending/mingqian/UsersDaoTest.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ascending/mingqian/jdbc/UsersDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ascending/mingqian/jdbc/RecordDao.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/RecordDaoTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ascending/mingqian/jdbc/AccountInfoDao.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/AccountInfoDaoTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/TestAll.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/UsersDaoTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ascending/mingqian/jdbc/UsersDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ascending/mingqian/model/Users.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/DemoTest.java" />
       </list>
     </option>
   </component>
@@ -219,7 +215,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="3" />
     <option name="y" value="23" />
     <option name="width" value="1280" />
@@ -232,7 +228,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -325,6 +320,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -358,7 +354,22 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestAll (1)">
+  <component name="RunManager" selected="JUnit.DemoTest">
+    <configuration name="DemoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="wealthManagement" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ascending.mingqian.jdbc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ascending.mingqian.jdbc" />
+      <option name="MAIN_CLASS_NAME" value="com.ascending.mingqian.jdbc.DemoTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RecordDaoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="wealthManagement" />
       <extension name="coverage">
@@ -407,7 +418,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UsersDaoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="com.ascending.mingqian.jdbc in wealthManagement" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="wealthManagement" />
       <extension name="coverage">
         <pattern>
@@ -416,42 +427,25 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ascending.mingqian.jdbc" />
-      <option name="MAIN_CLASS_NAME" value="com.ascending.mingqian.jdbc.UsersDaoTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UsersDaoTest.getUsersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="wealthManagement" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ascending.mingqian.jdbc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ascending.mingqian.jdbc" />
-      <option name="MAIN_CLASS_NAME" value="com.ascending.mingqian.jdbc.UsersDaoTest" />
-      <option name="METHOD_NAME" value="getUsersTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
       <item itemvalue="JUnit.TestAll" />
-      <item itemvalue="JUnit.UsersDaoTest" />
-      <item itemvalue="JUnit.UsersDaoTest.getUsersTest" />
       <item itemvalue="JUnit.TestAll (1)" />
       <item itemvalue="JUnit.RecordDaoTest" />
+      <item itemvalue="JUnit.com.ascending.mingqian.jdbc in wealthManagement" />
+      <item itemvalue="JUnit.DemoTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DemoTest" />
+        <item itemvalue="JUnit.com.ascending.mingqian.jdbc in wealthManagement" />
         <item itemvalue="JUnit.TestAll (1)" />
         <item itemvalue="JUnit.RecordDaoTest" />
         <item itemvalue="JUnit.TestAll" />
-        <item itemvalue="JUnit.UsersDaoTest" />
-        <item itemvalue="JUnit.UsersDaoTest.getUsersTest" />
       </list>
     </recent_temporary>
   </component>
@@ -469,25 +463,11 @@
       <workItem from="1563997583456" duration="6170000" />
       <workItem from="1564068441826" duration="3167000" />
       <workItem from="1564075999246" duration="12022000" />
+      <workItem from="1564504402667" duration="4423000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="UsersDaoTest - 2019.07.29 at 15h 39m 39s.xml">
-      <configuration name="UsersDaoTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UsersDaoTest - 2019.07.29 at 16h 03m 15s.xml">
-      <configuration name="UsersDaoTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestAll_(1) - 2019.07.29 at 16h 08m 42s.xml">
-      <configuration name="TestAll (1)" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestAll - 2019.07.29 at 16h 09m 00s.xml">
-      <configuration name="TestAll" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestAll - 2019.07.29 at 16h 11m 42s.xml">
-      <configuration name="TestAll" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TestAll - 2019.07.29 at 16h 12m 10s.xml">
       <configuration name="TestAll" configurationId="JUnit" />
     </history-entry>
@@ -503,15 +483,62 @@
     <history-entry file="TestAll_(1) - 2019.07.30 at 10h 41m 54s.xml">
       <configuration name="TestAll (1)" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="com_ascending_mingqian_jdbc_in_wealthManagement - 2019.07.30 at 15h 20m 44s.xml">
+      <configuration name="com.ascending.mingqian.jdbc in wealthManagement" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoTest - 2019.07.30 at 15h 57m 11s.xml">
+      <configuration name="DemoTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoTest - 2019.07.30 at 15h 58m 37s.xml">
+      <configuration name="DemoTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoTest - 2019.07.30 at 16h 00m 25s.xml">
+      <configuration name="DemoTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoTest - 2019.07.30 at 16h 12m 09s.xml">
+      <configuration name="DemoTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33194000" />
+    <option name="totallyTimeSpent" value="37617000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="709" extended-state="6" />
+    <frame x="3" y="23" width="1280" height="709" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34248787" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2657512" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.30794165" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.41815236" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32850242" />
+      <window_info active="true" anchor="right" id="Coverage" side_tool="true" visible="true" weight="0.15105008" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Maven" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34814218" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -540,58 +567,22 @@
       <window_info anchor="right" id="Maven" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
-    </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34248787" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.30794165" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.41815236" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32850242" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Maven" order="6" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/UsersDaoTest.java</url>
-          <line>47</line>
-          <properties />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="stmt.executeQuery(sql)" language="JAVA" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/wealthManagement$com_ascending_mingqian_jdbc_in_wealthManagement.ic" NAME="com.ascending.mingqian.jdbc in wealthManagement Coverage Results" MODIFIED="1564514440477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.ascending.mingqian.jdbc.*</FILTER>
+    </SUITE>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -653,19 +644,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/mingqian/model/Users.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="e#158#159#0" expanded="true" />
-            <element signature="e#183#184#0" expanded="true" />
-            <element signature="e#213#214#0" expanded="true" />
-            <element signature="e#240#241#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/db/migration/V1.1__insert_data_into_tables.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="284">
@@ -675,21 +653,14 @@
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11.jar!/org/junit/runners/model/FrameworkMethod.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
+        <state relative-caret-position="675">
           <caret line="46" selection-start-line="46" selection-end-line="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="43" column="17" lean-forward="true" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/mingqian/model/AccountInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
+        <state relative-caret-position="345">
           <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
           <folding>
             <element signature="e#197#198#0" expanded="true" />
@@ -698,10 +669,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/AccountInfoDaoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/mingqian/jdbc/AccountInfoDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1635">
+          <caret line="113" selection-start-line="113" selection-end-line="113" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/mingqian/jdbc/RecordDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1740">
+          <caret line="123" column="32" selection-start-line="115" selection-start-column="6" selection-end-line="123" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="41" column="17" lean-forward="true" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/RecordDaoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="69" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#489#490#0" expanded="true" />
+            <element signature="e#553#554#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/UsersDaoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="29" column="31" lean-forward="true" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/mingqian/jdbc/UsersDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="161" column="32" lean-forward="true" selection-start-line="156" selection-start-column="10" selection-end-line="161" selection-end-column="32" />
+        <state relative-caret-position="105">
+          <caret line="162" lean-forward="true" selection-start-line="162" selection-end-line="162" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#save#0;class#UsersDao#0" />
@@ -709,84 +739,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/mingqian/jdbc/RecordDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="123" column="32" lean-forward="true" selection-start-line="115" selection-start-column="6" selection-end-line="123" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/RecordDaoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="57" column="5" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="57" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#366#367#0" expanded="true" />
-            <element signature="e#432#433#0" expanded="true" />
-            <element signature="e#489#490#0" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#469#470#0" expanded="true" />
-            <element signature="e#510#511#0" expanded="true" />
-            <element signature="e#549#550#0" expanded="true" />
-            <element signature="e#580#581#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/mingqian/jdbc/AccountInfoDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1695">
-          <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/TestAll.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        <state relative-caret-position="180">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/AccountInfoDaoTest.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11.jar!/org/junit/Assert.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-203">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="-1522">
+          <caret line="27" column="39" lean-forward="true" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/mingqian/model/Users.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31">
+          <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#438#439#0" expanded="true" />
-            <element signature="e#504#505#0" expanded="true" />
-            <element signature="e#558#559#0" expanded="true" />
-            <element signature="e#622#623#0" expanded="true" />
-            <element signature="e#659#660#0" expanded="true" />
-            <element signature="e#712#713#0" expanded="true" />
-            <element signature="e#751#752#0" expanded="true" />
-            <element signature="e#788#789#0" expanded="true" />
+            <element signature="e#471#472#0" expanded="true" />
+            <element signature="e#516#517#0" expanded="true" />
+            <element signature="e#158#159#0" expanded="true" />
+            <element signature="e#183#184#0" expanded="true" />
+            <element signature="e#213#214#0" expanded="true" />
+            <element signature="e#240#241#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/UsersDaoTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ascending/mingqian/jdbc/DemoTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+        <state relative-caret-position="240">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#238#239#0" expanded="true" />
-            <element signature="e#259#260#0" expanded="true" />
-            <element signature="e#248#249#0" expanded="true" />
-            <element signature="e#289#290#0" expanded="true" />
-            <element signature="e#352#353#0" expanded="true" />
-            <element signature="e#377#378#0" expanded="true" />
+            <element signature="e#330#331#0" expanded="true" />
+            <element signature="e#351#352#0" expanded="true" />
+            <element signature="e#525#526#0" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
           </folding>
         </state>
       </provider>

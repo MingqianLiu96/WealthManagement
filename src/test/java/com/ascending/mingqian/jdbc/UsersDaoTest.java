@@ -9,8 +9,9 @@ import java.util.List;
 
 
 public class UsersDaoTest {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+   // private Logger logger = LoggerFactory.getLogger(this.getClass());
     private UsersDao usersDao;
+
     @BeforeClass
     public static void initAllTest(){
         System.out.println("*********Start Test*********");
@@ -45,8 +46,8 @@ public class UsersDaoTest {
         users1.setName("Nancy");
         users1.setPassword("nana1996");
         usersDao.save(users1);
-        logger.debug(String.format("the user %s was inserted into the table.",users1.toString()));
-        logger.info("test");
+     //   logger.debug(String.format("the user %s was inserted into the table.",users1.toString()));
+     //   logger.info("test");
         //branch1
     }
 

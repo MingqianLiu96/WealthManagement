@@ -1,7 +1,9 @@
 package com.ascending.mingqian.jdbc;
 
 import com.ascending.mingqian.model.Users;
-import com.ascending.mingqian.model.Users;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,6 +14,7 @@ public class UsersDao {
     static final String DB_URL = "jdbc:postgresql://localhost:5432/accounting";
     static final String USER = "admin";
     static final String PASS = "molly";
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public Users save(Users users){
 
@@ -98,6 +101,7 @@ public class UsersDao {
     }
 
     public List<Users> getUsers(){
+        logger.info("Enter the method getUsers.");
 
         List<Users> usersList = new ArrayList();
         Connection conn = null;
@@ -136,6 +140,7 @@ public class UsersDao {
 
         }
         catch(Exception e){
+            logger.error(e.getMessage());
             e.printStackTrace();
         }
         finally {
@@ -149,7 +154,20 @@ public class UsersDao {
                 se.printStackTrace();
             }
         }
+
+        logger.trace("Trace"+usersList.size());
+        logger.debug("Debug"+usersList.size());
+        logger.info("Info"+usersList.size());
+        logger.warn("Warn"+usersList.size());
+        logger.error("Error"+usersList.size());
+
+        logger.info("Exit the method getUsers.");
+
+
         return usersList;
+
+
+
     }
     public static void main(String[] args){
         UsersDao usersDao = new UsersDao();
