@@ -113,15 +113,15 @@ public class RecordDao {
     public static void main(String[] args) {
         RecordDao recordDao = new RecordDao();
 
-//        Record record1 = new Record();
-//        record1.setType("rent");
-//        record1.setAmount(3300);
-//        long time = System.currentTimeMillis();
-//        java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
-//        record1.setDate(timestamp);
-//        record1.setDescription("three months rent for agent");
-//        record1.setAccountInfo_id(8);
-//        recordDao.save(record1);
+        Record record1 = new Record();
+        record1.setType("rent");
+        record1.setAmount(3300);
+        long time = System.currentTimeMillis();
+        java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
+        record1.setDate(timestamp);
+        record1.setDescription("three months rent for agent");
+        record1.setAccountInfo_id(8);
+        recordDao.save(record1);
 
         List<Record> records = recordDao.getRecords();
 

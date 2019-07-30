@@ -158,7 +158,7 @@ public class UsersDao {
 //        users1.setName("Nancy");
 //        users1.setPassword("nana1996");
 //        usersDao.save(users1);
-
+//
 //        usersDao.delete_id(1);
 
         List<Users> users = usersDao.getUsers();
