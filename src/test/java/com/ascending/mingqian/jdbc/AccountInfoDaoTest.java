@@ -13,12 +13,12 @@ public class AccountInfoDaoTest {
     private AccountInfoDao accountInfoDao;
     @BeforeClass
     public static void initAllTest(){
-        System.out.println("*********Start Test*********");
+        System.out.println("*********Start Test......*********");
     }
 
     @AfterClass
     public static void endAllTest(){
-        System.out.println("*********End Test*********");
+        System.out.println("*********Test are done!!!*********");
     }
 
     @Before
@@ -45,11 +45,22 @@ public class AccountInfoDaoTest {
 
     //@Ignore
     @Test
-    public void saveTest(){
+    public void createTest(){
         AccountInfo accountInfo1 = new AccountInfo();
         accountInfo1.setBalance(1200);
         accountInfo1.setAccountType("Wechat Pay");
         accountInfo1.setUsers_id(2);
-        accountInfoDao.save(accountInfo1);
+        accountInfoDao.create(accountInfo1);
     }
+
+    @Test
+    public void remove_idTest(){
+        accountInfoDao.remove_id(8);
+    }
+
+    @Test
+    public void update_passwordTest(){
+        accountInfoDao.update_balance(250,4);
+    }
+
 }

@@ -15,7 +15,7 @@ public class RecordDao {
     static final String USER = "admin";
     static final String PASS = "molly";
 
-    public Record save(Record record){
+    public Record create(Record record){
 
         Connection conn = null;
         Statement stmt = null;
@@ -58,6 +58,82 @@ public class RecordDao {
 
         return record;
     }
+
+    public void remove_id(int id){
+
+        Connection conn = null;
+        Statement stmt = null;
+//        ResultSet rs = null;
+        try {
+            //STEP 2: Open a connection
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            //STEP 3: Execute a query
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+
+
+            String sql;
+            sql = "delete from record where id = " + id;
+
+
+            stmt.executeUpdate(sql);
+
+
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            //STEP 6: finally block used to close resources
+            try {
+//                if(rs != null) rs.close();
+                if(stmt != null) stmt.close();
+                if(conn != null) conn.close();
+            }
+            catch(SQLException se) {
+                se.printStackTrace();
+            }
+        }
+
+    }
+
+    public void update_amount(double a,int id){
+        Connection conn = null;
+        Statement stmt = null;
+
+        try {
+
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            //STEP 3: Execute a query
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+
+
+            String sql;
+            sql = "update record set amount = \'"+ a +
+                    " \' where id = "+id;
+
+            stmt.executeUpdate(sql);
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally {
+
+            try {
+                if(stmt != null) stmt.close();
+                if(conn != null) conn.close();
+            }
+            catch(SQLException se) {
+                se.printStackTrace();
+            }
+        }
+    }
+
 
     public List<Record> getRecords() {
         List<Record> recordList = new ArrayList();
@@ -121,7 +197,7 @@ public class RecordDao {
         record1.setDate(timestamp);
         record1.setDescription("three months rent for agent");
         record1.setAccountInfo_id(8);
-        recordDao.save(record1);
+        recordDao.create(record1);
 
         List<Record> records = recordDao.getRecords();
 

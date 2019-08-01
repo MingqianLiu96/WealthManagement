@@ -16,7 +16,7 @@ public class UsersDao {
     static final String PASS = "molly";
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public Users save(Users users){
+    public Users create(Users users){
 
         Connection conn = null;
         Statement stmt = null;
@@ -58,7 +58,7 @@ public class UsersDao {
         return users;
     }
 
-    public void delete_id(int id){
+    public void remove_id(int id){
 
         Connection conn = null;
         Statement stmt = null;
@@ -98,6 +98,41 @@ public class UsersDao {
             }
         }
 
+    }
+
+    public void update_password(String p,int id){
+        Connection conn = null;
+        Statement stmt = null;
+
+        try {
+
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            //STEP 3: Execute a query
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+
+
+            String sql;
+            sql = "update users set password = \'"+ p +
+                    " \' where id = "+id;
+
+            stmt.executeUpdate(sql);
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally {
+
+            try {
+                if(stmt != null) stmt.close();
+                if(conn != null) conn.close();
+            }
+            catch(SQLException se) {
+                se.printStackTrace();
+            }
+        }
     }
 
     public List<Users> getUsers(){
@@ -169,21 +204,24 @@ public class UsersDao {
 
 
     }
-    public static void main(String[] args){
-        UsersDao usersDao = new UsersDao();
 
+
+//    public static void main(String[] args){
+//        UsersDao usersDao = new UsersDao();
+//
 //        Users users1 = new Users();
 //        users1.setName("Nancy");
 //        users1.setPassword("nana1996");
-//        usersDao.save(users1);
+//        usersDao.create(users1);
 //
-//        usersDao.delete_id(1);
-
-        List<Users> users = usersDao.getUsers();
-
-        for(Users u : users){
-            System.out.println(u.getId()+" "+u.getName()+" "+u.getPassword());
-
-        }
-    }
+//        usersDao.remove_id(1);
+//        usersDao.update_password("molly1996",3);
+//
+//        List<Users> users = usersDao.getUsers();
+//
+//        for(Users u : users){
+//            System.out.println(u.getId()+" "+u.getName()+" "+u.getPassword());
+//
+//        }
+//    }
 }

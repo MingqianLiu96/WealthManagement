@@ -44,7 +44,7 @@ public class RecordDaoTest {
 
     //@Ignore
     @Test
-    public void saveTest(){
+    public void createTest(){
         Record record1 = new Record();
         record1.setType("rent");
         record1.setAmount(3300);
@@ -53,8 +53,18 @@ public class RecordDaoTest {
         record1.setDate(timestamp);
         record1.setDescription("three months rent for agent");
         record1.setAccountInfo_id(8);
-        recordDao.save(record1);
+        recordDao.create(record1);
 
+    }
+
+    @Test
+    public void remove_idTest(){
+        recordDao.remove_id(3);
+    }
+
+    @Test
+    public void update_passwordTest(){
+        recordDao.update_amount(25.89,4);
     }
 
 }

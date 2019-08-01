@@ -11,7 +11,7 @@ public class AccountInfoDao {
     static final String DB_URL = "jdbc:postgresql://localhost:5432/accounting";
     static final String USER = "admin";
     static final String PASS = "molly";
-    public AccountInfo save(AccountInfo accountInfo){
+    public AccountInfo create(AccountInfo accountInfo){
 
         Connection conn = null;
         Statement stmt = null;
@@ -54,6 +54,85 @@ public class AccountInfoDao {
 
         return accountInfo;
     }
+
+    public void remove_id(int id){
+
+        Connection conn = null;
+        Statement stmt = null;
+//        ResultSet rs = null;
+        try {
+            //STEP 2: Open a connection
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            //STEP 3: Execute a query
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+
+
+            String sql1,sql2;
+            sql1 = "delete from record where record.accountInfo_id = " + id;
+            sql2 = "delete from accountInfo where id = "+id;
+
+
+            stmt.executeUpdate(sql1);
+            stmt.executeUpdate(sql2);
+
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            //STEP 6: finally block used to close resources
+            try {
+//                if(rs != null) rs.close();
+                if(stmt != null) stmt.close();
+                if(conn != null) conn.close();
+            }
+            catch(SQLException se) {
+                se.printStackTrace();
+            }
+        }
+
+    }
+
+    public void update_balance(double b,int id){
+        Connection conn = null;
+        Statement stmt = null;
+
+        try {
+
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            //STEP 3: Execute a query
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+
+
+            String sql;
+            sql = "update accountInfo set balance = \'"+ b +
+                    " \' where id = "+id;
+
+            stmt.executeUpdate(sql);
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally {
+
+            try {
+                if(stmt != null) stmt.close();
+                if(conn != null) conn.close();
+            }
+            catch(SQLException se) {
+                se.printStackTrace();
+            }
+        }
+    }
+
+
+
     public List<AccountInfo> getAccountInfos() {
         List<AccountInfo> accountInfoList = new ArrayList();
         Connection conn = null;
@@ -110,7 +189,7 @@ public class AccountInfoDao {
 //        accountInfo1.setBalance(1200);
 //        accountInfo1.setAccountType("Wechat Pay");
 //        accountInfo1.setUsers_id(2);
-//        accountInfoDao.save(accountInfo1);
+//        accountInfoDao.create(accountInfo1);
 
         List<AccountInfo> accountInfos = accountInfoDao.getAccountInfos();
 

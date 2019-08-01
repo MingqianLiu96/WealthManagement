@@ -11,44 +11,67 @@ import java.util.List;
 public class UsersDaoTest {
    // private Logger logger = LoggerFactory.getLogger(this.getClass());
     private UsersDao usersDao;
+    private static Logger logger = LoggerFactory.getLogger(DemoTest.class);
+
 
     @BeforeClass
-    public static void initAllTest(){
-        System.out.println("*********Start Test*********");
+    public static  void initTestAll(){
+
+        logger.info("*********BeforeClass:Start testing...*********");
+    }
+    @AfterClass
+    public static void  endTestAll(){
+        logger.info("*********AfterClass:tests are done...*********");
+
     }
 
     @Before
     public void init(){
+        logger.info("before method");
         usersDao = new UsersDao();
     }
 
     @After
     public void cleanup(){
+        logger.info("after method");
         usersDao = null;
     }
-    @Test
-    public void getUsersTest(){
 
-        List<Users> users = usersDao.getUsers();
-     //   int expectedNumOfUsers = 5;
-        for(Users u : users){
-            System.out.println(u.getId()+" "+u.getName()+" "+u.getPassword());
-
-        }
-   //     Assert.assertEquals(expectedNumOfUsers,users.size());
-    }
 
     //@Ignore
     @Test
-    public void saveTest(){
+    public void createTest(){
 
         Users users1 = new Users();
         users1.setName("Nancy");
         users1.setPassword("nana1996");
-        usersDao.save(users1);
+        usersDao.create(users1);
      //   logger.debug(String.format("the user %s was inserted into the table.",users1.toString()));
      //   logger.info("test");
         //branch1
     }
+
+    @Test
+    public void remove_idTest(){
+        usersDao.remove_id(1);
+    }
+
+    @Test
+    public void update_passwordTest(){
+        usersDao.update_password("mollymolly",3);
+    }
+
+    @Test
+    public void getUsersTest(){
+
+        List<Users> users = usersDao.getUsers();
+        //   int expectedNumOfUsers = 5;
+        for(Users u : users){
+            System.out.println(u.getId()+" "+u.getName()+" "+u.getPassword());
+
+        }
+        //     Assert.assertEquals(expectedNumOfUsers,users.size());
+    }
+
 
 }
