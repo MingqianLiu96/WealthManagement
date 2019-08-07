@@ -1,17 +1,17 @@
 package com.ascending.mingqian.jdbc;
 
-import com.ascending.mingqian.model.AccountInfo;
+import com.ascending.mingqian.model.Account;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AccountInfoDao {
+public class AccountDao {
     //STEP 1: Database information
     static final String DB_URL = "jdbc:postgresql://localhost:5432/accounting";
     static final String USER = "admin";
     static final String PASS = "molly";
-    public AccountInfo create(AccountInfo accountInfo){
+    public Account create(Account account){
 
         Connection conn = null;
         Statement stmt = null;
@@ -26,9 +26,9 @@ public class AccountInfoDao {
 
 
             String sql;
-            sql = "insert into accountInfo (balance, accountType,users_id) values " +
+            sql = "insert into account (balance, accountType,users_id) values " +
                     "("+
-                    accountInfo.getBalance()+",\'"+accountInfo.getAccountType()+"\',"+accountInfo.getUsers_id() +
+                    account.getBalance()+",\'"+account.getAccountType()+"\',"+account.getUsers_id() +
                     ")";
 
             stmt.executeUpdate(sql);
@@ -52,7 +52,7 @@ public class AccountInfoDao {
         }
 
 
-        return accountInfo;
+        return account;
     }
 
     public void remove_id(int id){
@@ -70,8 +70,8 @@ public class AccountInfoDao {
 
 
             String sql1,sql2;
-            sql1 = "delete from record where record.accountInfo_id = " + id;
-            sql2 = "delete from accountInfo where id = "+id;
+            sql1 = "delete from record where record.account_id = " + id;
+            sql2 = "delete from account where id = "+id;
 
 
             stmt.executeUpdate(sql1);
@@ -110,7 +110,7 @@ public class AccountInfoDao {
 
 
             String sql;
-            sql = "update accountInfo set balance = \'"+ b +
+            sql = "update account set balance = \'"+ b +
                     " \' where id = "+id;
 
             stmt.executeUpdate(sql);
@@ -131,10 +131,8 @@ public class AccountInfoDao {
         }
     }
 
-
-
-    public List<AccountInfo> getAccountInfos() {
-        List<AccountInfo> accountInfoList = new ArrayList();
+    public List<Account> getAccountInfos() {
+        List<Account> accountInfoList = new ArrayList();
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
@@ -146,7 +144,7 @@ public class AccountInfoDao {
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
-            sql = "SELECT * FROM accountInfo";
+            sql = "SELECT * FROM account";
             rs = stmt.executeQuery(sql);
             //STEP 4: Extract data from result set
             while(rs.next()) {
@@ -156,13 +154,13 @@ public class AccountInfoDao {
                 String accountType = rs.getString("accountType");
                 int users_id = rs.getInt("users_id");
                 //Fill the object
-                AccountInfo accountInfo = new AccountInfo();
-                accountInfo.setId(id);
-                accountInfo.setBalance(balance);
-                accountInfo.setAccountType(accountType);
-                accountInfo.setUsers_id(users_id);
+                Account account = new Account();
+                account.setId(id);
+                account.setBalance(balance);
+                account.setAccountType(accountType);
+                account.setUsers_id(users_id);
 
-                accountInfoList.add(accountInfo);
+                accountInfoList.add(account);
 
             }
         }
@@ -183,19 +181,19 @@ public class AccountInfoDao {
         return accountInfoList;
     }
     public static void main(String[] args){
-        AccountInfoDao accountInfoDao = new AccountInfoDao();
+        AccountDao accountInfoDao = new AccountDao();
 
-//        AccountInfo accountInfo1 = new AccountInfo();
+//        Account accountInfo1 = new Account();
 //        accountInfo1.setBalance(1200);
 //        accountInfo1.setAccountType("Wechat Pay");
 //        accountInfo1.setUsers_id(2);
 //        accountInfoDao.create(accountInfo1);
 
-        List<AccountInfo> accountInfos = accountInfoDao.getAccountInfos();
+        List<Account> accountInfos = accountInfoDao.getAccountInfos();
 
-        for(AccountInfo accountInfo : accountInfos){
-            System.out.println(accountInfo.getId()+" "+accountInfo.getBalance()+" "+
-                    accountInfo.getAccountType()+" "+accountInfo.getUsers_id());
+        for(Account account : accountInfos){
+            System.out.println(account.getId()+" "+account.getBalance()+" "+
+                    account.getAccountType()+" "+account.getUsers_id());
 
         }
     }

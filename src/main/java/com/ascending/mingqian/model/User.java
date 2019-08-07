@@ -1,19 +1,35 @@
 package com.ascending.mingqian.model;
 
+import javax.persistence.*;
 import java.util.Objects;
 
-public class Users {
+@Entity
+@Table(name = "users")
+public class User {
+    public User(){}
+    public User(Integer id, String name, String password){
+        this.id = id;
+        this.name = name;
+        this.password = password;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "password")
     private String password;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Users users = (Users) o;
-        return id == users.id &&
-                name.equals(users.name);
+        User user = (User) o;
+        return id == user.id &&
+                name.equals(user.name);
     }
 
     @Override
@@ -45,4 +61,8 @@ public class Users {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return String.format("name=%s",name);
+    }
 }

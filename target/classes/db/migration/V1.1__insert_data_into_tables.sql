@@ -6,7 +6,7 @@ insert into users (name, password) values
 ;
 commit;
 
-insert into accountInfo (balance, accountType,users_id) values
+insert into account (balance, accountType,users_id) values
 (500.0, 'debit card',1),
 (600.9, 'credit card',1),
 (3000, 'alipay',1),
@@ -19,7 +19,7 @@ insert into accountInfo (balance, accountType,users_id) values
 ;
 commit;
 
-insert into record (type, amount,date,description,accountInfo_id) values
+insert into record (type, amount,date,description,account_id) values
 ('food', 15.99, '2019-07-22 12:30:59' , 'chick-fill-A',2),
 ('clothes', 79.19,'2019-07-23 09:30:59','zara',2),
 ('food', 15.99,'2019-07-22 12:36:39','chick-fill-A',5),

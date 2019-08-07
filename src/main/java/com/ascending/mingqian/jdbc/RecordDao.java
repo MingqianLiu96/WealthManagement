@@ -1,6 +1,6 @@
 package com.ascending.mingqian.jdbc;
 
-import com.ascending.mingqian.model.AccountInfo;
+import com.ascending.mingqian.model.Account;
 import com.ascending.mingqian.model.Record;
 
 import java.sql.*;
@@ -30,9 +30,9 @@ public class RecordDao {
 
 
             String sql;
-            sql = "insert into record (type,amount, date, description, accountInfo_id) values " +
+            sql = "insert into record (type,amount, date, description, account_id) values " +
                     "(\'"+
-                    record.getType()+"\',"+record.getAmount()+",\'"+record.getDate()+"\',\'"+record.getDescription()+"\',"+record.getAccountInfo_id() +
+                    record.getType()+"\',"+record.getAmount()+",\'"+record.getDate()+"\',\'"+record.getDescription()+"\',"+record.getAccount_id() +
                     ")";
 
             stmt.executeUpdate(sql);
@@ -158,7 +158,7 @@ public class RecordDao {
                 double amount = rs.getDouble("amount");
                 Date date = rs.getDate("date");
                 String description = rs.getString("description");
-                int accountInfo_id = rs.getInt("accountInfo_id");
+                int account_id = rs.getInt("account_id");
                 //Fill the object
                 Record record = new Record();
                 record.setId(id);
@@ -166,7 +166,7 @@ public class RecordDao {
                 record.setAmount(amount);
                 record.setDate(date);
                 record.setDescription(description);
-                record.setAccountInfo_id(accountInfo_id);
+                record.setAccount_id(account_id);
 
                 recordList.add(record);
 
@@ -196,7 +196,7 @@ public class RecordDao {
         java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
         record1.setDate(timestamp);
         record1.setDescription("three months rent for agent");
-        record1.setAccountInfo_id(8);
+        record1.setAccount_id(8);
         recordDao.create(record1);
 
         List<Record> records = recordDao.getRecords();
@@ -204,7 +204,7 @@ public class RecordDao {
         for (Record record : records) {
             System.out.println(record.getId() + " " + record.getType() + " " +
                     record.getAmount() + " " + record.getDate()+" "+record.getDescription()+" "+
-                    record.getAccountInfo_id());
+                    record.getAccount_id());
 
         }
     }

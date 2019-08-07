@@ -1,6 +1,6 @@
 package com.ascending.mingqian.jdbc;
 
-import com.ascending.mingqian.model.Users;
+import com.ascending.mingqian.model.User;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +16,7 @@ public class UsersDao {
     static final String PASS = "molly";
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public Users create(Users users){
+    public User create(User users){
 
         Connection conn = null;
         Statement stmt = null;
@@ -73,9 +73,9 @@ public class UsersDao {
 
 
             String sql1,sql2,sql3;
-            sql1 = "delete from record where record.accountInfo_id in " +
-                    "(select id from accountInfo where accountInfo.users_id = "+id+")";
-            sql2 = "delete from accountInfo where accountInfo.users_id = "+id;
+            sql1 = "delete from record where record.account_id in " +
+                    "(select id from account where account.users_id = "+id+")";
+            sql2 = "delete from account where account.users_id = "+id;
             sql3 = "delete from users where users.id = "+ id;
 
             stmt.executeUpdate(sql1);
@@ -135,10 +135,10 @@ public class UsersDao {
         }
     }
 
-    public List<Users> getUsers(){
+    public List<User> getUsers(){
         logger.info("Enter the method getUsers.");
 
-        List<Users> usersList = new ArrayList();
+        List<User> userList = new ArrayList();
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
@@ -163,12 +163,12 @@ public class UsersDao {
                 String password = rs.getString("password");
 
                 //Fill the object
-                Users user = new Users();
+                User user = new User();
                 user.setId(id);
                 user.setName(name);
                 user.setPassword(password);
 
-                usersList.add(user);
+                userList.add(user);
 
             }
 
@@ -190,16 +190,16 @@ public class UsersDao {
             }
         }
 
-        logger.trace("Trace"+usersList.size());
-        logger.debug("Debug"+usersList.size());
-        logger.info("Info"+usersList.size());
-        logger.warn("Warn"+usersList.size());
-        logger.error("Error"+usersList.size());
+        logger.trace("Trace"+userList.size());
+        logger.debug("Debug"+userList.size());
+        logger.info("Info"+userList.size());
+        logger.warn("Warn"+userList.size());
+        logger.error("Error"+userList.size());
 
         logger.info("Exit the method getUsers.");
 
 
-        return usersList;
+        return userList;
 
 
 

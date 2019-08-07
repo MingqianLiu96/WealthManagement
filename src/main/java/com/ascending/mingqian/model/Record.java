@@ -1,14 +1,32 @@
 package com.ascending.mingqian.model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+
+@Entity
+@Table(name = "record")
+
 public class Record {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "type")
     private  String type;
+
+    @Column(name = "amount")
     private double amount;
+
+    @Column(name = "date")
     private Date date;
+
+    @Column(name = "description")
     private String description;
-    private int accountInfo_id;
+
+    @Column(name = "account_id")
+    private int account_id;
 
     public int getId(){
         return id;
@@ -30,8 +48,8 @@ public class Record {
         return description;
     }
 
-    public int getAccountInfo_id(){
-        return accountInfo_id;
+    public int getAccount_id(){
+        return account_id;
     }
 
     public void setId(int id){
@@ -54,8 +72,8 @@ public class Record {
         this.description = description;
     }
 
-    public void setAccountInfo_id(int accountInfo_id){
-        this.accountInfo_id = accountInfo_id;
+    public void setAccount_id(int account_id){
+        this.account_id = account_id;
     }
 
 }

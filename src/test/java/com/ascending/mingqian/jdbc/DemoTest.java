@@ -53,7 +53,7 @@ public class DemoTest {
         logger.debug("########## Test2 - Debug: test1 is done. ##########");
         logger.info("########## Test2 - Info: test1 is done. ##########");
         logger.warn("########## Test2 - Warn: test1 is done. ##########");
-        logger.error("########## Test2 - Error: test1 is done. ##########");
+      logger.error("########## Test2 - Error: test1 is done. ##########");
     }
 
 

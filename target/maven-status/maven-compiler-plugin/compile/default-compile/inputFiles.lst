@@ -1,7 +1,8 @@
 /Users/molly/IdeaProjects/wealthManagement/src/main/java/com/ascending/mingqian/jdbc/UsersDao.java
 /Users/molly/IdeaProjects/wealthManagement/src/main/java/com/ascending/mingqian/App.java
 /Users/molly/IdeaProjects/wealthManagement/src/main/java/com/ascending/mingqian/jdbc/AccountInfoDao.java
-/Users/molly/IdeaProjects/wealthManagement/src/main/java/com/ascending/mingqian/model/Users.java
+/Users/molly/IdeaProjects/wealthManagement/src/main/java/com/ascending/mingqian/util/HibernateUtil.java
 /Users/molly/IdeaProjects/wealthManagement/src/main/java/com/ascending/mingqian/jdbc/RecordDao.java
+/Users/molly/IdeaProjects/wealthManagement/src/main/java/com/ascending/mingqian/model/User.java
 /Users/molly/IdeaProjects/wealthManagement/src/main/java/com/ascending/mingqian/model/AccountInfo.java
 /Users/molly/IdeaProjects/wealthManagement/src/main/java/com/ascending/mingqian/model/Record.java

@@ -1,1 +1,8 @@
+com/ascending/mingqian/model/User.class
+com/ascending/mingqian/model/Record.class
+com/ascending/mingqian/util/HibernateUtil.class
+com/ascending/mingqian/jdbc/RecordDao.class
+com/ascending/mingqian/jdbc/UsersDao.class
+com/ascending/mingqian/jdbc/AccountInfoDao.class
 com/ascending/mingqian/App.class
+com/ascending/mingqian/model/AccountInfo.class
