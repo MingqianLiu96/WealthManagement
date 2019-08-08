@@ -13,7 +13,7 @@ CREATE SEQUENCE record_id_seq START WITH 1;
 
 create table users(
   /* id                INTEGER NOT NULL default nextval('user_id_seq'), */
-   id                SERIAL NOT NULL,
+   id                BIGSERIAL NOT NULL,
    name              VARCHAR(30) not null,
    password          VARCHAR(50)
 );
@@ -22,21 +22,21 @@ alter table users add constraint users_pk primary key(id);
 
 create table account(
 /*   id                INTEGER NOT NULL default nextval('account_id_seq'),*/
-   id                SERIAL NOT NULL,
+   id                BIGSERIAL NOT NULL,
    balance           FLOAT not null default(0.00),
-   accountType       VARCHAR(50),
-   users_id          INTEGER
+   account_type       VARCHAR(50),
+   users_id          BIGINT
 );
 alter table account  add constraint account_pk primary key(id);
 
 create table record(
 /*  id     		    INTEGER NOT NULL default nextval('record_id_seq'),*/
-  id                SERIAL NOT NULL,
+  id                BIGSERIAL NOT NULL,
   type 			    VARCHAR(50),
   amount 		    FLOAT not null,
   date			    timestamp not null,
   description       VARCHAR(100),
-  account_id    INTEGER
+  account_id        BIGINT
 );
 alter table record add constraint record_pk primary key(id);
 alter table account

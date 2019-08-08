@@ -6,7 +6,7 @@ insert into users (name, password) values
 ;
 commit;
 
-insert into account (balance, accountType,users_id) values
+insert into account (balance, account_type,users_id) values
 (500.0, 'debit card',1),
 (600.9, 'credit card',1),
 (3000, 'alipay',1),

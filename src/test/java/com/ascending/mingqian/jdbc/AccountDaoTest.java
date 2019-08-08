@@ -50,20 +50,20 @@ public class AccountDaoTest {
         Account accountInfo1 = new Account();
         accountInfo1.setBalance(1200);
         accountInfo1.setAccountType("Wechat Pay");
-        accountInfo1.setUsers_id(2);
+        accountInfo1.setUsers_id(Long.valueOf(2));
         accountInfoDao.create(accountInfo1);
         System.out.println("Test 2");
     }
 
     @Test
     public void remove_idTest(){
-        accountInfoDao.remove_id(2);
+        accountInfoDao.remove_id(Long.valueOf(2));
         System.out.println("Test 3");
     }
 
     @Test
     public void update_passwordTest(){
-        accountInfoDao.update_balance(250,4);
+        accountInfoDao.update_balance(250,Long.valueOf(2));
         System.out.println("Test 4");
     }
 

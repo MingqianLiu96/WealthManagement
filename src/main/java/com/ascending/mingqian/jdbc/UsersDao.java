@@ -58,7 +58,7 @@ public class UsersDao {
         return users;
     }
 
-    public void remove_id(int id){
+    public void remove_id(long id){
 
         Connection conn = null;
         Statement stmt = null;
@@ -100,7 +100,7 @@ public class UsersDao {
 
     }
 
-    public void update_password(String p,int id){
+    public void update_password(String p,long id){
         Connection conn = null;
         Statement stmt = null;
 
@@ -158,7 +158,7 @@ public class UsersDao {
             //STEP 4: Extract data from result set
             while(rs.next()){
                 //Retrieve by column name
-                int id = rs.getInt("id");
+                long id = rs.getInt("id");
                 String name = rs.getString("name");
                 String password = rs.getString("password");
 

@@ -7,7 +7,7 @@ import java.util.Objects;
 @Table(name = "users")
 public class User {
     public User(){}
-    public User(Integer id, String name, String password){
+    public User(Long id, String name, String password){
         this.id = id;
         this.name = name;
         this.password = password;
@@ -15,7 +15,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(name = "name")
     private String name;
@@ -37,7 +37,7 @@ public class User {
         return Objects.hash(id, name);
     }
 
-    public  int getId(){
+    public  long getId(){
         return id;
     }
 
@@ -49,7 +49,7 @@ public class User {
         return password;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -63,6 +63,10 @@ public class User {
 
     @Override
     public String toString() {
-        return String.format("name=%s",name);
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

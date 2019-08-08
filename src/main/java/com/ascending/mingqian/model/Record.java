@@ -5,13 +5,13 @@ import java.util.Date;
 
 
 @Entity
-@Table(name = "record")
+@Table(name = "records")
 
 public class Record {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(name = "type")
     private  String type;
@@ -26,9 +26,9 @@ public class Record {
     private String description;
 
     @Column(name = "account_id")
-    private int account_id;
+    private long accountId;
 
-    public int getId(){
+    public long getId(){
         return id;
     }
 
@@ -48,11 +48,11 @@ public class Record {
         return description;
     }
 
-    public int getAccount_id(){
-        return account_id;
+    public long getAccount_id(){
+        return accountId;
     }
 
-    public void setId(int id){
+    public void setId(long id){
         this.id = id;
     }
 
@@ -72,8 +72,20 @@ public class Record {
         this.description = description;
     }
 
-    public void setAccount_id(int account_id){
-        this.account_id = account_id;
+    public void setAccount_id(long account_id){
+
+        this.accountId = account_id;
     }
 
+    @Override
+    public String toString() {
+        return "Record{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                ", amount=" + amount +
+                ", date=" + date +
+                ", description='" + description + '\'' +
+                ", account_id=" + accountId +
+                '}';
+    }
 }

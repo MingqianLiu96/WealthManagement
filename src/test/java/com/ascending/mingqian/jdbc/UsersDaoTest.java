@@ -11,7 +11,7 @@ import java.util.List;
 public class UsersDaoTest {
    // private Logger logger = LoggerFactory.getLogger(this.getClass());
     private UsersDao usersDao;
-    private static Logger logger = LoggerFactory.getLogger(DemoTest.class);
+    private static Logger logger = LoggerFactory.getLogger(UsersDaoTest.class);
 
 
     @BeforeClass
@@ -53,12 +53,12 @@ public class UsersDaoTest {
 
     @Test
     public void remove_idTest(){
-        usersDao.remove_id(1);
+        usersDao.remove_id(Long.valueOf(1));
     }
 
     @Test
     public void update_passwordTest(){
-        usersDao.update_password("mollymolly",3);
+        usersDao.update_password("mollymolly",Long.valueOf(3));
     }
 
     @Test

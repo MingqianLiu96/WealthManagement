@@ -1,10 +1,10 @@
 package com.ascending.mingqian.jdbc;
 
-import com.ascending.mingqian.model.Account;
+
 import com.ascending.mingqian.model.Record;
 
 import java.sql.*;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -59,7 +59,7 @@ public class RecordDao {
         return record;
     }
 
-    public void remove_id(int id){
+    public void remove_id(long id){
 
         Connection conn = null;
         Statement stmt = null;
@@ -99,7 +99,7 @@ public class RecordDao {
 
     }
 
-    public void update_amount(double a,int id){
+    public void update_amount(double a,long id){
         Connection conn = null;
         Statement stmt = null;
 
@@ -153,12 +153,12 @@ public class RecordDao {
             //STEP 4: Extract data from result set
             while (rs.next()) {
                 //Retrieve by column name
-                int id = rs.getInt("id");
+                long id = rs.getInt("id");
                 String type = rs.getString("type");
                 double amount = rs.getDouble("amount");
                 Date date = rs.getDate("date");
                 String description = rs.getString("description");
-                int account_id = rs.getInt("account_id");
+                long account_id = rs.getInt("account_id");
                 //Fill the object
                 Record record = new Record();
                 record.setId(id);
@@ -186,26 +186,26 @@ public class RecordDao {
         return recordList;
     }
 
-    public static void main(String[] args) {
-        RecordDao recordDao = new RecordDao();
-
-        Record record1 = new Record();
-        record1.setType("rent");
-        record1.setAmount(3300);
-        long time = System.currentTimeMillis();
-        java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
-        record1.setDate(timestamp);
-        record1.setDescription("three months rent for agent");
-        record1.setAccount_id(8);
-        recordDao.create(record1);
-
-        List<Record> records = recordDao.getRecords();
-
-        for (Record record : records) {
-            System.out.println(record.getId() + " " + record.getType() + " " +
-                    record.getAmount() + " " + record.getDate()+" "+record.getDescription()+" "+
-                    record.getAccount_id());
-
-        }
-    }
+//    public static void main(String[] args) {
+//        RecordDao recordDao = new RecordDao();
+//
+//        Record record1 = new Record();
+//        record1.setType("rent");
+//        record1.setAmount(3300);
+//        long time = System.currentTimeMillis();
+//        java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
+//        record1.setDate(timestamp);
+//        record1.setDescription("three months rent for agent");
+//        record1.setAccount_id(8);
+//        recordDao.create(record1);
+//
+//        List<Record> records = recordDao.getRecords();
+//
+//        for (Record record : records) {
+//            System.out.println(record.getId() + " " + record.getType() + " " +
+//                    record.getAmount() + " " + record.getDate()+" "+record.getDescription()+" "+
+//                    record.getAccount_id());
+//
+//        }
+//    }
 }

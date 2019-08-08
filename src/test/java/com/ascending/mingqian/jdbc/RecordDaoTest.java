@@ -52,19 +52,20 @@ public class RecordDaoTest {
         java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
         record1.setDate(timestamp);
         record1.setDescription("three months rent for agent");
-        record1.setAccount_id(8);
+        record1.setAccount_id(Long.valueOf(8));
         recordDao.create(record1);
 
     }
 
     @Test
     public void remove_idTest(){
-        recordDao.remove_id(3);
+
+        recordDao.remove_id(Long.valueOf(3));
     }
 
     @Test
     public void update_passwordTest(){
-        recordDao.update_amount(25.89,4);
+        recordDao.update_amount(25.89,Long.valueOf(4));
     }
 
 }

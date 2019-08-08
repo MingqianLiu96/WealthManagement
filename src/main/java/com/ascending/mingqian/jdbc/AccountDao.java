@@ -26,7 +26,7 @@ public class AccountDao {
 
 
             String sql;
-            sql = "insert into account (balance, accountType,users_id) values " +
+            sql = "insert into account (balance, account_type,users_id) values " +
                     "("+
                     account.getBalance()+",\'"+account.getAccountType()+"\',"+account.getUsers_id() +
                     ")";
@@ -55,7 +55,7 @@ public class AccountDao {
         return account;
     }
 
-    public void remove_id(int id){
+    public void remove_id(long id){
 
         Connection conn = null;
         Statement stmt = null;
@@ -96,7 +96,7 @@ public class AccountDao {
 
     }
 
-    public void update_balance(double b,int id){
+    public void update_balance(double b,long id){
         Connection conn = null;
         Statement stmt = null;
 
@@ -149,15 +149,15 @@ public class AccountDao {
             //STEP 4: Extract data from result set
             while(rs.next()) {
                 //Retrieve by column name
-                int id  = rs.getInt("id");
+                long id  = rs.getInt("id");
                 double balance = rs.getDouble("balance");
-                String accountType = rs.getString("accountType");
-                int users_id = rs.getInt("users_id");
+                String account_type = rs.getString("account_type");
+                long users_id = rs.getInt("users_id");
                 //Fill the object
                 Account account = new Account();
                 account.setId(id);
                 account.setBalance(balance);
-                account.setAccountType(accountType);
+                account.setAccountType(account_type);
                 account.setUsers_id(users_id);
 
                 accountInfoList.add(account);
@@ -180,21 +180,22 @@ public class AccountDao {
         }
         return accountInfoList;
     }
-    public static void main(String[] args){
-        AccountDao accountInfoDao = new AccountDao();
-
+//    public static void main(String[] args){
+//        AccountDao accountInfoDao = new AccountDao();
+//
 //        Account accountInfo1 = new Account();
 //        accountInfo1.setBalance(1200);
 //        accountInfo1.setAccountType("Wechat Pay");
 //        accountInfo1.setUsers_id(2);
 //        accountInfoDao.create(accountInfo1);
+//
+//        List<Account> accountInfos = accountInfoDao.getAccountInfos();
+//
+//        for(Account account : accountInfos){
+//            System.out.println(account.getId()+" "+account.getBalance()+" "+
+//                    account.getAccountType()+" "+account.getUsers_id());
+//
+//        }
+//    }
 
-        List<Account> accountInfos = accountInfoDao.getAccountInfos();
-
-        for(Account account : accountInfos){
-            System.out.println(account.getId()+" "+account.getBalance()+" "+
-                    account.getAccountType()+" "+account.getUsers_id());
-
-        }
-    }
 }

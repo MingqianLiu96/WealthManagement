@@ -1,5 +1,7 @@
 package com.ascending.mingqian.repository;
 
+import com.ascending.mingqian.model.Account;
+import com.ascending.mingqian.model.Record;
 import com.ascending.mingqian.model.User;
 import com.ascending.mingqian.util.HibernateUtil;
 import org.hibernate.Session;
@@ -12,6 +14,8 @@ import java.util.List;
 
 public class UserDaoImpl implements UserDao{
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private RecordDao recordDao = new RecordDaoImpl();
+    private AccountDao accountDao = new AccountDaoImpl();
 
     @Override
     public boolean save(User user){
@@ -35,10 +39,31 @@ public class UserDaoImpl implements UserDao{
 
     @Override
     public boolean delete(String userName){
+//        sql1 = "delete from record where record.account_id in " +
+//                "(select id from account where account.users_id = "+id+")";
+//        sql2 = "delete from account where account.users_id = "+id;
+//        String hql1 = "DELETE Record where account_id in" +
+//                "(FROM account AS account where users_id = " +
+//                "(FROM User where name = :userName1))";
+        User u = getUserByName(userName);
+       // List<Account> a = accountDao.getAccountByUserId(u.getId());
+
+//        for(Users u : users){
+//            System.out.println(u.getId()+" "+u.getName()+" "+u.getPassword());
+//
+//        }
+        Account a = accountDao.getAccountByUserId(u.getId());
+        System.out.println(a.toString());
+        Record r = recordDao.getRecordByAccountId(a.getId());
+        System.out.println(r.toString());
+        recordDao.delete(r.getId());
+        accountDao.delete(u.getId());
+
         String hql = "DELETE User where name = :userName1";
         int deletedCount = 0;
         Transaction transaction = null;
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
+
             Query<User> query = session.createQuery(hql);
             query.setParameter("userName1",userName);
 

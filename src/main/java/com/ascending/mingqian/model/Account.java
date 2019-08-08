@@ -1,30 +1,30 @@
 package com.ascending.mingqian.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "accounts")
 
 public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(name = "balance")
     private double balance;
 
-    @Column(name = "accountType")
+    @Column(name = "account_type")
     private String accountType;
 
-    @Column(name = "users_id")
-    private int users_id;
+    @Column(name = "user_id")
+    private long userId;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -44,13 +44,22 @@ public class Account {
         this.accountType = accountType;
     }
 
-    public int getUsers_id() {
-        return users_id;
+    public long getUsers_id() {
+        return userId;
     }
 
-    public void setUsers_id(int users_id) {
-        this.users_id = users_id;
+    public void setUsers_id(long users_id) {
+        this.userId = users_id;
     }
 
 
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", balance=" + balance +
+                ", accountType='" + accountType + '\'' +
+                ", users_id=" + userId +
+                '}';
+    }
 }
