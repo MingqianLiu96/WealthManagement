@@ -1,6 +1,7 @@
 package com.ascending.mingqian.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "accounts")
@@ -59,7 +60,7 @@ public class Account {
                 "id=" + id +
                 ", balance=" + balance +
                 ", accountType='" + accountType + '\'' +
-                ", users_id=" + userId +
+                ", userId=" + userId +
                 '}';
     }
 }

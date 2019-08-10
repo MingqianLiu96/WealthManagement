@@ -1,6 +1,8 @@
 package com.ascending.mingqian.repository;
 
+import com.ascending.mingqian.model.Account;
 import com.ascending.mingqian.model.Record;
+import com.ascending.mingqian.model.User;
 import com.ascending.mingqian.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -8,6 +10,7 @@ import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecordDaoImpl implements RecordDao{
@@ -36,6 +39,8 @@ public class RecordDaoImpl implements RecordDao{
 
     @Override
     public boolean delete(Long id){
+
+
         String hql = "DELETE Record where id = :recordId";
         int deletedCount = 0;
         Transaction transaction = null;
@@ -89,18 +94,36 @@ public class RecordDaoImpl implements RecordDao{
     }
 
     @Override
-    public Record getRecordByAccountId(Long accountId){
+    public List<Record> getRecordByAccountId(Long accountId){
         //if(id == null) return null;
-
         String hql = "FROM Record r where r.accountId = :id";
 
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Record> query = session.createQuery(hql);
             query.setParameter("id",accountId);
+//
+//            Record record = query.uniqueResult();
+//            logger.debug(record.toString());
+
+            return query.list();
+
+        }
+
+    }
+
+    @Override
+    public Record getRecordById(Long id){
+        //if(id == null) return null;
+        String hql = "FROM Record r where r.id = :id";
+
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            Query<Record> query = session.createQuery(hql);
+            query.setParameter("id",id);
 
             Record record = query.uniqueResult();
-            logger.debug(record.toString());
-
+            if (record != null) {
+                logger.debug(record.toString());
+            }
             return record;
 
         }

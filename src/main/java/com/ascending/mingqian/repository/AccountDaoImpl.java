@@ -1,6 +1,7 @@
 package com.ascending.mingqian.repository;
 
 import com.ascending.mingqian.model.Account;
+import com.ascending.mingqian.model.Record;
 import com.ascending.mingqian.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,6 +13,7 @@ import java.util.List;
 
 public class AccountDaoImpl implements AccountDao {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private RecordDao recordDao = new RecordDaoImpl();
 
     @Override
     public boolean save(Account account){
@@ -36,6 +38,14 @@ public class AccountDaoImpl implements AccountDao {
 
     @Override
     public boolean delete(Long id){
+
+        List<Record> records = recordDao.getRecordByAccountId(id);
+        if(records != null) {
+            for (Record r : records) {
+                recordDao.delete(r.getId());
+            }
+        }
+
         String hql = "DELETE Account where id = :accountId";
         int deletedCount = 0;
         Transaction transaction = null;
@@ -89,7 +99,7 @@ public class AccountDaoImpl implements AccountDao {
     }
 
     @Override
-    public Account getAccountByUserId(Long userId){
+    public List<Account> getAccountByUserId(Long userId){
         //if(id == null) return null;
 
         String hql = "FROM Account a where a.userId = :id";
@@ -97,12 +107,30 @@ public class AccountDaoImpl implements AccountDao {
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Account> query = session.createQuery(hql);
             query.setParameter("id",userId);
+//
+//            Account account = query.uniqueResult();
+//            logger.debug(account.toString());
+
+            return query.list();
+
+        }
+
+    }
+    @Override
+    public Account getAccountById(Long id){
+        if(id == null) return null;
+
+        String hql = "FROM Account a where a.id = :id";
+
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            Query<Account> query = session.createQuery(hql);
+            query.setParameter("id",id);
 
             Account account = query.uniqueResult();
-            logger.debug(account.toString());
-
+            if(account != null) {
+                logger.debug(account.toString());
+            }
             return account;
-
         }
 
     }

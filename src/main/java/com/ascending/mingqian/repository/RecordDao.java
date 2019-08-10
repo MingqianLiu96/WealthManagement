@@ -9,5 +9,6 @@ public interface RecordDao {
     boolean update(Record record);
     boolean delete(Long id);
     List<Record> getRecords();
-    Record getRecordByAccountId(Long accountId);
+    Record getRecordById(Long id);
+    List<Record> getRecordByAccountId(Long accountId);
 }

@@ -34,35 +34,35 @@ public class UserDaoTest {
     @Before
     public void init() {
         logger.info("before method");
-//        userDao = new UserDaoImpl();
-//
-//        User user1 = new User();
-//        user1.setName("Garnet");
-//        user1.setPassword("garnet");
-//        userDao.save(user1);
+        userDao = new UserDaoImpl();
+
+        User user1 = new User();
+        user1.setName("Garnet");
+        user1.setPassword("garnet");
+        userDao.save(user1);
 
     }
     @After
     public void cleanup(){
         logger.info("after method");
-//        User userGarnet = userDao.getUserByName("Garnet");
+        User userGarnet = userDao.getUserByName("Garnet");
 
-//        if(userGarnet != null){
-//            System.out.println("garnet is not null");
-//            userDao.delete("Garnet");
-//        }
-//        User userNancy = userDao.getUserByName("Nancy");
-//        if(userNancy != null){
-//            userDao.delete("Nancy");
-//        }
-//
-//        User user2 = userDao.getUserByName("Rebecca");
-//        if(!user2.getPassword().equals("virginia")) {
-//            user2.setId(Long.valueOf(4));
-//            user2.setName("Rebecca");
-//            user2.setPassword("virginia");
-//            userDao.update(user2);
-//        }
+        if(userGarnet != null){
+            System.out.println("garnet is not null");
+            userDao.delete("Garnet");
+        }
+        User userNancy = userDao.getUserByName("Nancy");
+        if(userNancy != null){
+            userDao.delete("Nancy");
+        }
+
+        User user2 = userDao.getUserByName("Rebecca");
+        if(!user2.getPassword().equals("virginia")) {
+            user2.setId(Long.valueOf(4));
+            user2.setName("Rebecca");
+            user2.setPassword("virginia");
+            userDao.update(user2);
+        }
 
         userDao = null;
     }
@@ -71,7 +71,7 @@ public class UserDaoTest {
     public void getUsers(){
         List<User> users = userDao.getUsers();
         users.forEach(user -> System.out.println(user));
-        assertEquals(users.size(),4);
+        assertEquals(users.size(),5);
     }
 
     @Test
@@ -102,7 +102,6 @@ public class UserDaoTest {
 
     @Test
     public void delete(){
-
         userDao.delete("Garnet");
     }
 
