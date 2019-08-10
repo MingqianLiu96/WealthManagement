@@ -1,7 +1,0 @@
-com/ascending/mingqian/AppTest.class
-com/ascending/mingqian/repository/HibernateMappingTest.class
-com/ascending/mingqian/jdbc/AccountInfoDaoTest.class
-com/ascending/mingqian/jdbc/RecordDaoTest.class
-com/ascending/mingqian/jdbc/DemoTest.class
-com/ascending/mingqian/jdbc/UsersDaoTest.class
-com/ascending/mingqian/jdbc/TestAll.class
