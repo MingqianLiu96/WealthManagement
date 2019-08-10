@@ -105,7 +105,7 @@
           <version>${flyway.version}</version>
           <configuration>
             <driver>org.postgresql.Driver</driver>
-            <url>jdbc:postgresql://localhost:5432/accounting</url>
+            <url>jdbc:postgresql://localhost:5432/wealth_management_unit</url>
             <user>admin</user>
             <password>molly</password>
             <schemas>

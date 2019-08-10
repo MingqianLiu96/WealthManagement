@@ -14,6 +14,9 @@ import static junit.framework.TestCase.assertNotNull;
 public class UserDaoTest {
     private UserDao userDao;
     private static Logger logger = LoggerFactory.getLogger(UserDaoTest.class);
+    private long i;
+    private long j;
+
 
 
     @BeforeClass
@@ -40,6 +43,7 @@ public class UserDaoTest {
         user1.setName("Garnet");
         user1.setPassword("garnet");
         userDao.save(user1);
+        i = user1.getId();
 
     }
     @After
@@ -56,14 +60,13 @@ public class UserDaoTest {
             userDao.delete("Nancy");
         }
 
-        User user2 = userDao.getUserByName("Rebecca");
-        if(!user2.getPassword().equals("virginia")) {
-            user2.setId(Long.valueOf(4));
-            user2.setName("Rebecca");
-            user2.setPassword("virginia");
-            userDao.update(user2);
+        User user2 = userDao.getUserByName("Garnet");
+        if(user2 != null) {
+            if (!user2.getPassword().equals("garnet")) {
+                user2.setPassword("garnet");
+                userDao.update(user2);
+            }
         }
-
         userDao = null;
     }
 
@@ -71,12 +74,12 @@ public class UserDaoTest {
     public void getUsers(){
         List<User> users = userDao.getUsers();
         users.forEach(user -> System.out.println(user));
-        assertEquals(users.size(),5);
+        assertEquals(users.size(),1);
     }
 
     @Test
     public void getUserByName(){
-        String name = "Ada";
+        String name = "Garnet";
         User user = userDao.getUserByName(name);
         assertNotNull(user.getPassword());
         assertNotNull(user.getId());
@@ -85,19 +88,19 @@ public class UserDaoTest {
 
     @Test
     public void save(){
-        User users1 = new User();
-        users1.setName("Nancy");
-        users1.setPassword("nana1996");
-        userDao.save(users1);
+        User user = new User();
+        user.setName("Nancy");
+        user.setPassword("nana1996");
+        userDao.save(user);
+        j = user.getId();
     }
 
     @Test
     public void update(){
-        User users2 = new User();
-        users2.setId(Long.valueOf(4));
-        users2.setName("Rebecca");
-        users2.setPassword("hhhhhh");
-        userDao.update(users2);
+        User user = new User();
+        user.setId(i);
+        user.setPassword("hhhhhh");
+        userDao.update(user);
     }
 
     @Test

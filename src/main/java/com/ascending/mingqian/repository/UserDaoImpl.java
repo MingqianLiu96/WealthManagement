@@ -77,6 +77,47 @@ public class UserDaoImpl implements UserDao{
 
     }
 
+
+    @Override
+    public boolean delete(Long id){
+
+        User u = getUserById(id);
+        if(u != null) {
+
+            List<Account> accounts = accountDao.getAccountByUserId(u.getId());
+            for (Account a : accounts) {
+                List<Record> records = recordDao.getRecordByAccountId(a.getId());
+
+                for (Record r : records) {
+                    recordDao.delete(r.getId());
+                }
+                accountDao.delete(a.getId());
+            }
+        }
+
+        String hql = "DELETE User where id = :id";
+        int deletedCount = 0;
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+
+            Query<User> query = session.createQuery(hql);
+            query.setParameter("id", id);
+
+            transaction = session.beginTransaction();
+            deletedCount = query.executeUpdate();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
+            logger.error(e.getMessage());
+        }
+        logger.debug(String.format("The user %d was deleted", id));
+        return deletedCount >= 1 ? true : false;
+
+
+    }
+
+
+
     @Override
     public boolean update(User user){
         Transaction transaction = null;
