@@ -18,8 +18,16 @@ public class Account {
     @Column(name = "account_type")
     private String accountType;
 
-    @Column(name = "user_id")
-    private long userId;
+//    @Column(name = "user_id")
+//    private long userId;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name= "user_id")
+    private User user;
+
+    @OneToMany(mappedBy = "account",cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
+    private List<Record> records;
+
 
     public long getId() {
         return id;
@@ -45,14 +53,22 @@ public class Account {
         this.accountType = accountType;
     }
 
-    public long getUsers_id() {
-        return userId;
+//    public long getUsers_id() {
+//        return userId;
+//    }
+//
+//    public void setUsers_id(long users_id) {
+//        this.userId = users_id;
+//    }
+
+
+    public User getUser() {
+        return user;
     }
 
-    public void setUsers_id(long users_id) {
-        this.userId = users_id;
+    public void setUser(User user) {
+        this.user = user;
     }
-
 
     @Override
     public String toString() {
@@ -60,7 +76,7 @@ public class Account {
                 "id=" + id +
                 ", balance=" + balance +
                 ", accountType='" + accountType + '\'' +
-                ", userId=" + userId +
+                ", user=" + user +
                 '}';
     }
 }

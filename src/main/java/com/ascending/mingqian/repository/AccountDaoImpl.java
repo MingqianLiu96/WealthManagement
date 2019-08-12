@@ -102,7 +102,7 @@ public class AccountDaoImpl implements AccountDao {
     public List<Account> getAccountByUserId(Long userId){
         //if(id == null) return null;
 
-        String hql = "FROM Account a where a.userId = :id";
+        String hql = "FROM Account a where a.user.id = :id";
 
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Account> query = session.createQuery(hql);

@@ -47,7 +47,7 @@ public class AccountDaoTest {
         Account a1 = new Account();
         a1.setAccountType("credit");
         a1.setBalance(145);
-        a1.setUsers_id(userId);
+       // a1.setUsers_id(userId);
         accountDao.save(a1);
         i = a1.getId();
 
@@ -67,10 +67,10 @@ public class AccountDaoTest {
         }
         Account a4 = accountDao.getAccountById(i);
         if(a4 != null) {
-            if (!a4.getAccountType().equals("credit") || a4.getBalance() != (double) 145 || a4.getUsers_id() != 3) {
+            if (!a4.getAccountType().equals("credit") || a4.getBalance() != (double) 145 || a4.getUser().getId() != 3) {
                 a4.setBalance(145);
                 a4.setAccountType("credit");
-                a4.setUsers_id(userId);
+               // a4.setUsers_id(userId);
                 accountDao.update(a4);
             }
         }
@@ -105,7 +105,7 @@ public class AccountDaoTest {
         Account account1 = new Account();
         account1.setBalance(1200);
         account1.setAccountType("Wechat Pay");
-        account1.setUsers_id(userId);
+       // account1.setUsers_id(userId);
         accountDao.save(account1);
         j = account1.getId();
     }
@@ -116,7 +116,7 @@ public class AccountDaoTest {
         account2.setId(i);
         account2.setBalance(1200);
         account2.setAccountType("credit");
-        account2.setUsers_id(userId);
+       // account2.setUsers_id(userId);
         accountDao.update(account2);
     }
 

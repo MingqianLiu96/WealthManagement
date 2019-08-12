@@ -28,7 +28,7 @@ public class AccountDao {
             String sql;
             sql = "insert into account (balance, account_type,users_id) values " +
                     "("+
-                    account.getBalance()+",\'"+account.getAccountType()+"\',"+account.getUsers_id() +
+                    account.getBalance()+",\'"+account.getAccountType()+"\'," +
                     ")";
 
             stmt.executeUpdate(sql);
@@ -158,7 +158,7 @@ public class AccountDao {
                 account.setId(id);
                 account.setBalance(balance);
                 account.setAccountType(account_type);
-                account.setUsers_id(users_id);
+                //account.setUsers_id(users_id);
 
                 accountInfoList.add(account);
 

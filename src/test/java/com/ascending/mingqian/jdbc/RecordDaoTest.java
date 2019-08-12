@@ -37,7 +37,7 @@ public class RecordDaoTest {
         for(Record record : recordList){
             System.out.println(record.getId() + " " + record.getType() + " " +
                     record.getAmount() + " " + record.getDate()+" "+record.getDescription()+" "+
-                    record.getAccount_id());
+                    record.getAccount().getId());
         }
 
     }
@@ -52,7 +52,7 @@ public class RecordDaoTest {
         java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
         record1.setDate(timestamp);
         record1.setDescription("three months rent for agent");
-        record1.setAccount_id(Long.valueOf(8));
+        //record1.setAccount_id(Long.valueOf(8));
         recordDao.create(record1);
 
     }

@@ -96,7 +96,7 @@ public class RecordDaoImpl implements RecordDao{
     @Override
     public List<Record> getRecordByAccountId(Long accountId){
         //if(id == null) return null;
-        String hql = "FROM Record r where r.accountId = :id";
+        String hql = "FROM Record r where r.account.id = :id";
 
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Record> query = session.createQuery(hql);

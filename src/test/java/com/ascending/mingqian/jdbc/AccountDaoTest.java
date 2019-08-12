@@ -37,7 +37,7 @@ public class AccountDaoTest {
 
         for(Account accountInfo : accountInfos){
             System.out.println(accountInfo.getId()+" "+accountInfo.getBalance()+" "+
-                    accountInfo.getAccountType()+" "+accountInfo.getUsers_id());
+                    accountInfo.getAccountType()+" "+accountInfo.getUser().getId());
 
         }
         System.out.println("Test 1");
@@ -50,7 +50,7 @@ public class AccountDaoTest {
         Account accountInfo1 = new Account();
         accountInfo1.setBalance(1200);
         accountInfo1.setAccountType("Wechat Pay");
-        accountInfo1.setUsers_id(Long.valueOf(2));
+       // accountInfo1.setUsers_id(Long.valueOf(2));
         accountInfoDao.create(accountInfo1);
         System.out.println("Test 2");
     }

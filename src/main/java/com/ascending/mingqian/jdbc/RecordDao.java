@@ -32,7 +32,7 @@ public class RecordDao {
             String sql;
             sql = "insert into record (type,amount, date, description, account_id) values " +
                     "(\'"+
-                    record.getType()+"\',"+record.getAmount()+",\'"+record.getDate()+"\',\'"+record.getDescription()+"\',"+record.getAccount_id() +
+                    record.getType()+"\',"+record.getAmount()+",\'"+record.getDate()+"\',\'"+record.getDescription()+"\'," +
                     ")";
 
             stmt.executeUpdate(sql);
@@ -166,7 +166,7 @@ public class RecordDao {
                 record.setAmount(amount);
                 record.setDate(date);
                 record.setDescription(description);
-                record.setAccount_id(account_id);
+               // record.setAccount_id(account_id);
 
                 recordList.add(record);
 

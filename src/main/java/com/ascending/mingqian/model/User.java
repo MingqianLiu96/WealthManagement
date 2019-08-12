@@ -1,6 +1,7 @@
 package com.ascending.mingqian.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -22,6 +23,10 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
+    private List<Account> accounts;
+
 
     @Override
     public boolean equals(Object o) {

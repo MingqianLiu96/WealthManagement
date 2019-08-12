@@ -25,8 +25,12 @@ public class Record {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "account_id")
-    private long accountId;
+//    @Column(name = "account_id")
+//    private long accountId;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name= "account_id")
+    private Account account;
 
     public long getId(){
         return id;
@@ -48,9 +52,9 @@ public class Record {
         return description;
     }
 
-    public long getAccount_id(){
-        return accountId;
-    }
+//    public long getAccount_id(){
+//        return accountId;
+//    }
 
     public void setId(long id){
         this.id = id;
@@ -72,9 +76,17 @@ public class Record {
         this.description = description;
     }
 
-    public void setAccount_id(long account_id){
+//    public void setAccount_id(long account_id){
+//
+//        this.accountId = account_id;
+//    }
 
-        this.accountId = account_id;
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     @Override
@@ -85,7 +97,6 @@ public class Record {
                 ", amount=" + amount +
                 ", date=" + date +
                 ", description='" + description + '\'' +
-                ", account_id=" + accountId +
                 '}';
     }
 }
