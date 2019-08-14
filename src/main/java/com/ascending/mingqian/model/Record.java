@@ -97,6 +97,7 @@ public class Record {
                 ", amount=" + amount +
                 ", date=" + date +
                 ", description='" + description + '\'' +
+                ", account=" + account +
                 '}';
     }
 }
