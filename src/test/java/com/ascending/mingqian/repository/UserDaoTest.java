@@ -81,6 +81,7 @@ public class UserDaoTest {
     public void getUserByName(){
         String name = "Garnet";
         User user = userDao.getUserByName(name);
+        System.out.println(user);
         assertNotNull(user.getPassword());
         assertNotNull(user.getId());
 

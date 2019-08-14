@@ -51,7 +51,7 @@ public class RecordDaoTest {
         Account a1 = new Account();
         a1.setAccountType("credit");
         a1.setBalance(145);
-        //a1.setUsers_id(userId);
+        a1.setUser(userDao.getUserById((userId)));
         accountDao.save(a1);
         accountId = a1.getId();
 
@@ -62,7 +62,7 @@ public class RecordDaoTest {
         java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
         r1.setDate(timestamp);
         r1.setDescription("three months rent for agent");
-        //r1.setAccount_id(accountId);
+        r1.setAccount(accountDao.getAccountById(accountId));
         recordDao.save(r1);
         i = r1.getId();
     }
@@ -109,6 +109,14 @@ public class RecordDaoTest {
     }
 
     @Test
+    public void getRecordById(){
+        Record r = recordDao.getRecordById(i);
+        logger.info(r.toString());
+        System.out.println(r.getAccount().toString());
+        assertNotNull(r.toString());
+    }
+
+    @Test
     public void save(){
         Record record1 = new Record();
         record1.setType("rent");
@@ -117,7 +125,7 @@ public class RecordDaoTest {
         java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
         record1.setDate(timestamp);
         record1.setDescription("three months rent for agent");
-        //record1.setAccount_id(accountId);
+        record1.setAccount(accountDao.getAccountById(accountId));
         recordDao.save(record1);
         j = record1.getId();
     }

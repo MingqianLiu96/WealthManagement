@@ -44,11 +44,15 @@ public class AccountDaoTest {
         userDao.save(u);
         userId = u.getId();
 
+//        u = userDao.getUserByName(u.getName());
+//        userId = u.getId();
+
         Account a1 = new Account();
         a1.setAccountType("credit");
         a1.setBalance(145);
-       // a1.setUsers_id(userId);
+        a1.setUser(userDao.getUserById(userId));
         accountDao.save(a1);
+
         i = a1.getId();
 
 
@@ -70,7 +74,7 @@ public class AccountDaoTest {
             if (!a4.getAccountType().equals("credit") || a4.getBalance() != (double) 145 || a4.getUser().getId() != 3) {
                 a4.setBalance(145);
                 a4.setAccountType("credit");
-               // a4.setUsers_id(userId);
+                a4.setUser(userDao.getUserById(userId));
                 accountDao.update(a4);
             }
         }
@@ -82,9 +86,10 @@ public class AccountDaoTest {
     @Test
     public void getAccounts(){
         List<Account> accounts = accountDao.getAccounts();
-
         accounts.forEach(account -> System.out.println(account));
-        assertEquals(accounts.size(),1);
+        assertEquals(accounts.size(), 1);
+
+
 
     }
 
@@ -97,6 +102,8 @@ public class AccountDaoTest {
     @Test
     public void getAccountById(){
         Account a = accountDao.getAccountById(i);
+        logger.info(a.toString());
+        System.out.println(a.getUser().toString());
         assertNotNull(a.toString());
     }
 
@@ -105,7 +112,10 @@ public class AccountDaoTest {
         Account account1 = new Account();
         account1.setBalance(1200);
         account1.setAccountType("Wechat Pay");
-       // account1.setUsers_id(userId);
+        account1.setUser(userDao.getUserById(userId));
+//        User u = new User();
+//        u.setId(userId);
+//        account1.setUser(u);
         accountDao.save(account1);
         j = account1.getId();
     }
@@ -116,7 +126,7 @@ public class AccountDaoTest {
         account2.setId(i);
         account2.setBalance(1200);
         account2.setAccountType("credit");
-       // account2.setUsers_id(userId);
+        account2.setUser(userDao.getUserById(userId));
         accountDao.update(account2);
     }
 

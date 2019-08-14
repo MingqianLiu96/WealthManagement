@@ -85,7 +85,7 @@ public class RecordDaoImpl implements RecordDao{
 
     @Override
     public List<Record> getRecords(){
-        String hql = "FROM Record";
+        String hql = "FROM Record as r left join fetch r.account left join fetch r.account.user";
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Record> query = session.createQuery(hql);
             return query.list();
@@ -114,7 +114,7 @@ public class RecordDaoImpl implements RecordDao{
     @Override
     public Record getRecordById(Long id){
         //if(id == null) return null;
-        String hql = "FROM Record r where r.id = :id";
+        String hql = "FROM Record r left join fetch r.account where r.id = :id";
 
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Record> query = session.createQuery(hql);

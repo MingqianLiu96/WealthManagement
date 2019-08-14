@@ -153,7 +153,7 @@ public class UserDaoImpl implements UserDao{
     public User getUserByName(String userName){
         if(userName == null) return null;
 
-        String hql = "FROM User as user where lower(user.name) = :name";
+        String hql = "FROM User as u left join fetch u.accounts where lower(u.name) = :name";
 
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<User> query = session.createQuery(hql);

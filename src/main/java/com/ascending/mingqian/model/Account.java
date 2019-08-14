@@ -70,13 +70,21 @@ public class Account {
         this.user = user;
     }
 
+    public List<Record> getRecords() {
+        return records;
+    }
+
+    public void setRecords(List<Record> records) {
+        this.records = records;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
                 "id=" + id +
                 ", balance=" + balance +
                 ", accountType='" + accountType + '\'' +
-                ", user=" + user +
+                ", records=" + records +
                 '}';
     }
 }
