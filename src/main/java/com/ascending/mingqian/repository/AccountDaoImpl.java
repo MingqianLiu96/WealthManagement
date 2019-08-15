@@ -90,7 +90,7 @@ public class AccountDaoImpl implements AccountDao {
 
     @Override
     public List<Account> getAccounts(){
-        String hql = "FROM Account as a left join fetch a.user";
+        String hql = "FROM Account as a left join fetch a.records";
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Account> query = session.createQuery(hql);
             return query.list();
@@ -120,7 +120,7 @@ public class AccountDaoImpl implements AccountDao {
     public Account getAccountById(Long id){
         if(id == null) return null;
 
-        String hql = "FROM Account a left join fetch a.user where a.id = :id";
+        String hql = "FROM Account as a left join fetch a.records where a.id = :id";
 
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Account> query = session.createQuery(hql);

@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.Set;
 
 public class UserDaoImpl implements UserDao{
     private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -141,7 +142,7 @@ public class UserDaoImpl implements UserDao{
 
     @Override
     public List<User> getUsers(){
-        String hql = "FROM User";
+        String hql = "FROM User as u left join fetch u.accounts as acc left join fetch acc.records";
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<User> query = session.createQuery(hql);
             return query.list();
@@ -153,7 +154,7 @@ public class UserDaoImpl implements UserDao{
     public User getUserByName(String userName){
         if(userName == null) return null;
 
-        String hql = "FROM User as u left join fetch u.accounts where lower(u.name) = :name";
+        String hql = "FROM User as u left join fetch u.accounts as acc left join fetch acc.records where lower(u.name) = :name";
 
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<User> query = session.createQuery(hql);

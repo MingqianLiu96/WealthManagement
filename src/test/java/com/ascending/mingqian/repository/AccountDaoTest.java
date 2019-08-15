@@ -103,7 +103,7 @@ public class AccountDaoTest {
     public void getAccountById(){
         Account a = accountDao.getAccountById(i);
         logger.info(a.toString());
-        System.out.println(a.getUser().toString());
+        System.out.println(a);
         assertNotNull(a.toString());
     }
 

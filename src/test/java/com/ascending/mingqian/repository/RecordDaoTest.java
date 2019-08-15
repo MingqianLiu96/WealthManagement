@@ -112,7 +112,7 @@ public class RecordDaoTest {
     public void getRecordById(){
         Record r = recordDao.getRecordById(i);
         logger.info(r.toString());
-        System.out.println(r.getAccount().toString());
+        System.out.println(r);
         assertNotNull(r.toString());
     }
 

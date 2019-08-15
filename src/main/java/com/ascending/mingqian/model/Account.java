@@ -2,6 +2,7 @@ package com.ascending.mingqian.model;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "accounts")
@@ -26,7 +27,7 @@ public class Account {
     private User user;
 
     @OneToMany(mappedBy = "account",cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
-    private List<Record> records;
+    private Set<Record> records;
 
 
     public long getId() {
@@ -70,11 +71,11 @@ public class Account {
         this.user = user;
     }
 
-    public List<Record> getRecords() {
+    public Set<Record> getRecords() {
         return records;
     }
 
-    public void setRecords(List<Record> records) {
+    public void setRecords(Set<Record> records) {
         this.records = records;
     }
 
@@ -87,4 +88,16 @@ public class Account {
                 ", records=" + records +
                 '}';
     }
+
+
+//    @Override
+//    public String toString() {
+//        return "Account{" +
+//                "id=" + id +
+//                ", balance=" + balance +
+//                ", accountType='" + accountType + '\'' +
+//                ", user=" + user +
+//                ", records=" + records +
+//                '}';
+//    }
 }

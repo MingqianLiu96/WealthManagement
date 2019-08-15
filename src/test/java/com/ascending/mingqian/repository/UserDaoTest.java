@@ -1,6 +1,8 @@
 package com.ascending.mingqian.repository;
 
 
+import com.ascending.mingqian.model.Account;
+import com.ascending.mingqian.model.Record;
 import com.ascending.mingqian.model.User;
 import org.junit.*;
 import org.slf4j.Logger;
@@ -12,10 +14,14 @@ import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 
 public class UserDaoTest {
+    private RecordDao recordDao;
     private UserDao userDao;
-    private static Logger logger = LoggerFactory.getLogger(UserDaoTest.class);
+    private AccountDao accountDao;
+    private static Logger logger = LoggerFactory.getLogger(RecordDaoTest.class);
     private long i;
     private long j;
+    private long userId;
+    private long accountId;
 
 
 
@@ -39,22 +45,45 @@ public class UserDaoTest {
         logger.info("before method");
         userDao = new UserDaoImpl();
 
-        User user1 = new User();
-        user1.setName("Garnet");
-        user1.setPassword("garnet");
-        userDao.save(user1);
-        i = user1.getId();
+        User u = new User();
+        u.setName("Garnet");
+        u.setPassword("garnet");
+        userDao.save(u);
+        userId = u.getId();
+
+        accountDao = new AccountDaoImpl();
+        Account a1 = new Account();
+        a1.setAccountType("credit");
+        a1.setBalance(145);
+        a1.setUser(userDao.getUserById((userId)));
+        accountDao.save(a1);
+        accountId = a1.getId();
+
+        recordDao = new RecordDaoImpl();
+        Record r1 = new Record();
+        r1.setType("rent");
+        r1.setAmount(3300);
+        long time = System.currentTimeMillis();
+        java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
+        r1.setDate(timestamp);
+        r1.setDescription("three months rent for agent");
+        //r1.setAccount(accountDao.getAccountById(accountId));
+        Account a = new Account();
+        a.setId(accountId);
+        r1.setAccount(a);
+        System.out.println(r1);
+        recordDao.save(r1);
+        i = r1.getId();
 
     }
     @After
     public void cleanup(){
         logger.info("after method");
         User userGarnet = userDao.getUserByName("Garnet");
-
         if(userGarnet != null){
-            System.out.println("garnet is not null");
-            userDao.delete("Garnet");
+            userDao.delete(userId);
         }
+
         User userNancy = userDao.getUserByName("Nancy");
         if(userNancy != null){
             userDao.delete("Nancy");

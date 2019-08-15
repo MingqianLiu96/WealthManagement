@@ -3,6 +3,7 @@ package com.ascending.mingqian.model;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -25,7 +26,7 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
-    private List<Account> accounts;
+    private Set<Account> accounts;
 
 
     @Override
@@ -66,11 +67,11 @@ public class User {
         this.password = password;
     }
 
-    public List<Account> getAccounts() {
+    public Set<Account> getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(List<Account> accounts) {
+    public void setAccounts(Set<Account> accounts) {
         this.accounts = accounts;
     }
 
