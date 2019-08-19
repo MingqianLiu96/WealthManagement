@@ -10,14 +10,20 @@ import org.hibernate.query.Query;
 import org.hibernate.query.criteria.internal.expression.NullLiteralExpression;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Set;
 
+@Repository
 public class UserDaoImpl implements UserDao{
     private Logger logger = LoggerFactory.getLogger(this.getClass());
-    private RecordDao recordDao = new RecordDaoImpl();
-    private AccountDao accountDao = new AccountDaoImpl();
+
+    @Autowired
+    private RecordDao recordDao;
+    @Autowired
+    private AccountDao accountDao;
 
     @Override
     public boolean save(User user){
@@ -61,6 +67,8 @@ public class UserDaoImpl implements UserDao{
                 int deletedCount = 0;
                 Transaction transaction = null;
                 try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+//                    User u = getUserByName(userName);
+//                    session.delete(u);
 
                     Query<User> query = session.createQuery(hql);
                     query.setParameter("userName1", userName);

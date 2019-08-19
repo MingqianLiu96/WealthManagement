@@ -8,12 +8,18 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+
+@Repository
 public class AccountDaoImpl implements AccountDao {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
-    private RecordDao recordDao = new RecordDaoImpl();
+
+    @Autowired
+    private RecordDao recordDao;
 
     @Override
     public boolean save(Account account){
