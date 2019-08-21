@@ -12,22 +12,22 @@ public class RecordService {
     @Autowired
     private RecordDao recordDao;
 
-    boolean save(Record record){
+    public boolean save(Record record){
         return recordDao.save(record);
     }
-    boolean update(Record record){
+    public boolean update(Record record){
         return recordDao.update(record);
     }
-    boolean delete(Long id){
+    public boolean delete(Long id){
         return recordDao.delete(id);
     }
-    List<Record> getRecords(){
+    public List<Record> getRecords(){
         return recordDao.getRecords();
     }
-    Record getRecordById(Long id){
+    public Record getRecordById(Long id){
         return recordDao.getRecordById(id);
     }
-    List<Record> getRecordByAccountId(Long accountId){
+    public List<Record> getRecordByAccountId(Long accountId){
         return recordDao.getRecordByAccountId(accountId);
     }
 }

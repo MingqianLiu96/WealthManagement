@@ -12,22 +12,22 @@ public class AccountService {
     @Autowired
     private AccountDao accountDao;
 
-    boolean save(Account account){
+    public boolean save(Account account){
         return accountDao.save(account);
     }
-    boolean update(Account account){
+    public boolean update(Account account){
         return accountDao.update(account);
     }
-    boolean delete(Long id){
+    public boolean delete(Long id){
         return accountDao.delete(id);
     }
-    List<Account> getAccounts(){
+    public List<Account> getAccounts(){
         return accountDao.getAccounts();
     }
-    Account getAccountById(Long id){
+    public Account getAccountById(Long id){
         return accountDao.getAccountById(id);
     }
-    List<Account> getAccountByUserId(Long userId){
+    public List<Account> getAccountByUserId(Long userId){
         return accountDao.getAccountByUserId(userId);
     }
 }

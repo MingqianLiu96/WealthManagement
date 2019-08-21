@@ -108,7 +108,7 @@ public class AccountDaoImpl implements AccountDao {
     public List<Account> getAccountByUserId(Long userId){
         //if(id == null) return null;
 
-        String hql = "FROM Account a where a.user.id = :id";
+        String hql = "FROM Account as a left join fetch a.records where a.user.id = :id";
 
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Account> query = session.createQuery(hql);

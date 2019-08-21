@@ -71,7 +71,7 @@ public class UserDaoImpl implements UserDao{
 //                    session.delete(u);
 
                     Query<User> query = session.createQuery(hql);
-                    query.setParameter("userName1", userName);
+                    query.setParameter("userName1", userName.toLowerCase());
 
                     transaction = session.beginTransaction();
                     deletedCount = query.executeUpdate();

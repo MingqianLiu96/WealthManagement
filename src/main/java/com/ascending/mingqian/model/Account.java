@@ -1,5 +1,7 @@
 package com.ascending.mingqian.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
@@ -21,7 +23,7 @@ public class Account {
 
 //    @Column(name = "user_id")
 //    private long userId;
-
+    @JsonIgnore
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name= "user_id")
     private User user;
