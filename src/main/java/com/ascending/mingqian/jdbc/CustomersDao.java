@@ -1,6 +1,6 @@
 package com.ascending.mingqian.jdbc;
 
-import com.ascending.mingqian.model.User;
+import com.ascending.mingqian.model.Customer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,14 +9,14 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersDao {
+public class CustomersDao {
     //STEP 1: Database information
     static final String DB_URL = "jdbc:postgresql://localhost:5432/accounting";
     static final String USER = "admin";
     static final String PASS = "molly";
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public User create(User users){
+    public Customer create(Customer customers){
 
         Connection conn = null;
         Statement stmt = null;
@@ -31,9 +31,9 @@ public class UsersDao {
 
 
             String sql;
-            sql = "insert into users (name, password) values " +
+            sql = "insert into customers (name, password) values " +
                     "(\'"+
-                    users.getName()+"\',\'"+users.getPassword()+
+                    customers.getName()+"\',\'"+customers.getPassword()+
                     "\')";
 
             stmt.executeUpdate(sql);
@@ -55,7 +55,7 @@ public class UsersDao {
         }
 
 
-        return users;
+        return customers;
     }
 
     public void remove_id(long id){
@@ -74,9 +74,9 @@ public class UsersDao {
 
             String sql1,sql2,sql3;
             sql1 = "delete from record where record.account_id in " +
-                    "(select id from account where account.users_id = "+id+")";
-            sql2 = "delete from account where account.users_id = "+id;
-            sql3 = "delete from users where users.id = "+ id;
+                    "(select id from account where account.customers_id = "+id+")";
+            sql2 = "delete from account where account.customers_id = "+id;
+            sql3 = "delete from customers where customers.id = "+ id;
 
             stmt.executeUpdate(sql1);
             stmt.executeUpdate(sql2);
@@ -114,7 +114,7 @@ public class UsersDao {
 
 
             String sql;
-            sql = "update users set password = \'"+ p +
+            sql = "update customers set password = \'"+ p +
                     " \' where id = "+id;
 
             stmt.executeUpdate(sql);
@@ -135,10 +135,10 @@ public class UsersDao {
         }
     }
 
-    public List<User> getUsers(){
-        logger.info("Enter the method getUsers.");
+    public List<Customer> getCustomers(){
+        logger.info("Enter the method getCustomers.");
 
-        List<User> userList = new ArrayList();
+        List<Customer> customerList = new ArrayList();
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
@@ -152,7 +152,7 @@ public class UsersDao {
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
-            sql = "select * from Users";
+            sql = "select * from Customers";
             rs = stmt.executeQuery(sql);
 
             //STEP 4: Extract data from result set
@@ -163,12 +163,12 @@ public class UsersDao {
                 String password = rs.getString("password");
 
                 //Fill the object
-                User user = new User();
-                user.setId(id);
-                user.setName(name);
-                user.setPassword(password);
+                Customer customer = new Customer();
+                customer.setId(id);
+                customer.setName(name);
+                customer.setPassword(password);
 
-                userList.add(user);
+                customerList.add(customer);
 
             }
 
@@ -190,16 +190,16 @@ public class UsersDao {
             }
         }
 
-        logger.trace("Trace"+userList.size());
-        logger.debug("Debug"+userList.size());
-        logger.info("Info"+userList.size());
-        logger.warn("Warn"+userList.size());
-        logger.error("Error"+userList.size());
+        logger.trace("Trace"+ customerList.size());
+        logger.debug("Debug"+ customerList.size());
+        logger.info("Info"+ customerList.size());
+        logger.warn("Warn"+ customerList.size());
+        logger.error("Error"+ customerList.size());
 
-        logger.info("Exit the method getUsers.");
+        logger.info("Exit the method getCustomers.");
 
 
-        return userList;
+        return customerList;
 
 
 
@@ -207,19 +207,19 @@ public class UsersDao {
 
 
 //    public static void main(String[] args){
-//        UsersDao usersDao = new UsersDao();
+//        CustomersDao customersDao = new CustomersDao();
 //
-//        Users users1 = new Users();
-//        users1.setName("Nancy");
-//        users1.setPassword("nana1996");
-//        usersDao.create(users1);
+//        Customers customers1 = new Customers();
+//        customers1.setName("Nancy");
+//        customers1.setPassword("nana1996");
+//        customersDao.create(customers1);
 //
-//        usersDao.remove_id(1);
-//        usersDao.update_password("molly1996",3);
+//        customersDao.remove_id(1);
+//        customersDao.update_password("molly1996",3);
 //
-//        List<Users> users = usersDao.getUsers();
+//        List<Customers> customers = customersDao.getCustomers();
 //
-//        for(Users u : users){
+//        for(Customers u : customers){
 //            System.out.println(u.getId()+" "+u.getName()+" "+u.getPassword());
 //
 //        }

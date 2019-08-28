@@ -1,9 +1,9 @@
 package com.ascending.mingqian.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -13,20 +13,22 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonView(View.Account.class)
     private long id;
 
     @Column(name = "balance")
+    @JsonView(View.Account.class)
     private double balance;
 
     @Column(name = "account_type")
+    @JsonView(View.Account.class)
     private String accountType;
 
-//    @Column(name = "user_id")
-//    private long userId;
     @JsonIgnore
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name= "user_id")
-    private User user;
+    @JoinColumn(name= "customer_id")
+    @JsonView(View.Account.class)
+    private Customer customer;
 
     @OneToMany(mappedBy = "account",cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
     private Set<Record> records;
@@ -56,24 +58,30 @@ public class Account {
         this.accountType = accountType;
     }
 
-//    public long getUsers_id() {
-//        return userId;
+//    public long getCustomers_id() {
+//        return customerId;
 //    }
 //
-//    public void setUsers_id(long users_id) {
-//        this.userId = users_id;
+//    public void setCustomers_id(long customers_id) {
+//        this.customerId = customers_id;
 //    }
 
 
-    public User getUser() {
-        return user;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Set<Record> getRecords() {
+        try{
+            int size = records.size();
+        }
+        catch (Exception e){
+            return null;
+        }
         return records;
     }
 
@@ -87,7 +95,7 @@ public class Account {
                 "id=" + id +
                 ", balance=" + balance +
                 ", accountType='" + accountType + '\'' +
-                ", records=" + records +
+                ", records=" + getRecords() +
                 '}';
     }
 
@@ -98,7 +106,7 @@ public class Account {
 //                "id=" + id +
 //                ", balance=" + balance +
 //                ", accountType='" + accountType + '\'' +
-//                ", user=" + user +
+//                ", customer=" + customer +
 //                ", records=" + records +
 //                '}';
 //    }

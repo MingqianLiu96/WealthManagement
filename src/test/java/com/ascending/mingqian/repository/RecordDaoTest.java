@@ -1,8 +1,8 @@
 package com.ascending.mingqian.repository;
 
 import com.ascending.mingqian.model.Account;
+import com.ascending.mingqian.model.Customer;
 import com.ascending.mingqian.model.Record;
-import com.ascending.mingqian.model.User;
 import org.junit.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,12 +14,12 @@ import static junit.framework.TestCase.assertEquals;
 
 public class RecordDaoTest {
     private RecordDao recordDao;
-    private UserDao userDao;
+    private CustomerDao customerDao;
     private AccountDao accountDao;
     private static Logger logger = LoggerFactory.getLogger(RecordDaoTest.class);
     private long i;
     private long j;
-    private long userId;
+    private long customerId;
     private long accountId;
 
 
@@ -40,18 +40,18 @@ public class RecordDaoTest {
         logger.info("before method");
         recordDao = new RecordDaoImpl();
 
-        userDao = new UserDaoImpl();
-        User u = new User();
+        customerDao = new CustomerDaoImpl();
+        Customer u = new Customer();
         u.setName("Molly");
         u.setPassword("molly");
-        userDao.save(u);
-        userId = u.getId();
+        customerDao.save(u);
+        customerId = u.getId();
 
         accountDao = new AccountDaoImpl();
         Account a1 = new Account();
         a1.setAccountType("credit");
         a1.setBalance(145);
-        a1.setUser(userDao.getUserById((userId)));
+        a1.setCustomer(customerDao.getCustomerById((customerId)));
         accountDao.save(a1);
         accountId = a1.getId();
 
@@ -87,7 +87,7 @@ public class RecordDaoTest {
         }
 
         accountDao.delete(accountId);
-        userDao.delete(userId);
+        customerDao.delete(customerId);
         recordDao = null;
 
     }

@@ -6,7 +6,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        UserDaoTest.class,
+        CustomerDaoTest.class,
         AccountDaoTest.class,
         RecordDaoTest.class
 

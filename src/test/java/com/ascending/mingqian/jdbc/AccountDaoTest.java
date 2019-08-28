@@ -37,7 +37,7 @@ public class AccountDaoTest {
 
         for(Account accountInfo : accountInfos){
             System.out.println(accountInfo.getId()+" "+accountInfo.getBalance()+" "+
-                    accountInfo.getAccountType()+" "+accountInfo.getUser().getId());
+                    accountInfo.getAccountType()+" "+accountInfo.getCustomer().getId());
 
         }
         System.out.println("Test 1");

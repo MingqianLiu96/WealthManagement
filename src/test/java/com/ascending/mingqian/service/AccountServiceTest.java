@@ -2,7 +2,7 @@ package com.ascending.mingqian.service;
 
 import com.ascending.mingqian.init.AppInitializer;
 import com.ascending.mingqian.model.Account;
-import com.ascending.mingqian.model.User;
+import com.ascending.mingqian.model.Customer;
 
 
 import org.junit.*;
@@ -24,11 +24,11 @@ public class AccountServiceTest {
     @Autowired
     private AccountService accountService;
     @Autowired
-    private UserService userService;
+    private CustomerService customerService;
     private static Logger logger = LoggerFactory.getLogger(AccountServiceTest.class);
     private long i;
     private long j ;
-    private long userId;
+    private long customerId;
 
 
     @BeforeClass
@@ -48,19 +48,19 @@ public class AccountServiceTest {
     public void init() {
         logger.info("before method");
 
-        User u = new User();
+        Customer u = new Customer();
         u.setName("Molly");
         u.setPassword("molly");
-        userService.save(u);
-        userId = u.getId();
+        customerService.save(u);
+        customerId = u.getId();
 
-//        u = userService.getUserByName(u.getName());
-//        userId = u.getId();
+//        u = customerService.getCustomerByName(u.getName());
+//        customerId = u.getId();
 
         Account a1 = new Account();
         a1.setAccountType("credit");
         a1.setBalance(145);
-        a1.setUser(userService.getUserById(userId));
+        a1.setCustomer(customerService.getCustomerById(customerId));
         accountService.save(a1);
 
         i = a1.getId();
@@ -81,15 +81,15 @@ public class AccountServiceTest {
         }
         Account a4 = accountService.getAccountById(i);
         if(a4 != null) {
-            if (!a4.getAccountType().equals("credit") || a4.getBalance() != (double) 145 || a4.getUser().getId() != 3) {
+            if (!a4.getAccountType().equals("credit") || a4.getBalance() != (double) 145 || a4.getCustomer().getId() != 3) {
                 a4.setBalance(145);
                 a4.setAccountType("credit");
-                a4.setUser(userService.getUserById(userId));
+                a4.setCustomer(customerService.getCustomerById(customerId));
                 accountService.update(a4);
             }
         }
-        userService.delete("Molly");
-        userService = null;
+        customerService.delete("Molly");
+        customerService = null;
         accountService = null;
     }
 
@@ -104,8 +104,8 @@ public class AccountServiceTest {
     }
 
     @Test
-    public void getAccountByUserId(){
-        List<Account> a = accountService.getAccountByUserId(userId);
+    public void getAccountByCustomerId(){
+        List<Account> a = accountService.getAccountByCustomerId(customerId);
         assertNotNull(a.size());
     }
 
@@ -122,10 +122,10 @@ public class AccountServiceTest {
         Account account1 = new Account();
         account1.setBalance(1200);
         account1.setAccountType("Wechat Pay");
-        account1.setUser(userService.getUserById(userId));
-//        User u = new User();
-//        u.setId(userId);
-//        account1.setUser(u);
+        account1.setCustomer(customerService.getCustomerById(customerId));
+//        Customer u = new Customer();
+//        u.setId(customerId);
+//        account1.setCustomer(u);
         accountService.save(account1);
         j = account1.getId();
     }
@@ -136,7 +136,7 @@ public class AccountServiceTest {
         account2.setId(i);
         account2.setBalance(1200);
         account2.setAccountType("credit");
-        account2.setUser(userService.getUserById(userId));
+        account2.setCustomer(customerService.getCustomerById(customerId));
         accountService.update(account2);
     }
 

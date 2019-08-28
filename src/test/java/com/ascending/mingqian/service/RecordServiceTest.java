@@ -2,9 +2,8 @@ package com.ascending.mingqian.service;
 
 import com.ascending.mingqian.init.AppInitializer;
 import com.ascending.mingqian.model.Account;
+import com.ascending.mingqian.model.Customer;
 import com.ascending.mingqian.model.Record;
-import com.ascending.mingqian.model.User;
-import com.ascending.mingqian.repository.*;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -24,13 +23,13 @@ public class RecordServiceTest {
     @Autowired
     private RecordService recordService;
     @Autowired
-    private UserService userService;
+    private CustomerService customerService;
     @Autowired
     private AccountService accountService;
     private static Logger logger = LoggerFactory.getLogger(RecordServiceTest.class);
     private long i;
     private long j;
-    private long userId;
+    private long customerId;
     private long accountId;
 
 
@@ -51,17 +50,17 @@ public class RecordServiceTest {
         logger.info("before method");
 
 
-        User u = new User();
+        Customer u = new Customer();
         u.setName("Molly");
         u.setPassword("molly");
-        userService.save(u);
-        userId = u.getId();
+        customerService.save(u);
+        customerId = u.getId();
 
 
         Account a1 = new Account();
         a1.setAccountType("credit");
         a1.setBalance(145);
-        a1.setUser(userService.getUserById((userId)));
+        a1.setCustomer(customerService.getCustomerById((customerId)));
         accountService.save(a1);
         accountId = a1.getId();
 
@@ -97,7 +96,7 @@ public class RecordServiceTest {
         }
 
         accountService.delete(accountId);
-        userService.delete(userId);
+        customerService.delete(customerId);
         recordService = null;
 
     }

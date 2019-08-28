@@ -1,22 +1,18 @@
 package com.ascending.mingqian.controller;
 
-import com.ascending.mingqian.model.Account;
 import com.ascending.mingqian.model.Record;
 
-import com.ascending.mingqian.model.User;
 import com.ascending.mingqian.service.AccountService;
 import com.ascending.mingqian.service.RecordService;
 
-import com.ascending.mingqian.service.UserService;
+import com.ascending.mingqian.service.CustomerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping(value = {"/records"})
@@ -28,7 +24,7 @@ public class RecordController {
     @Autowired
     private AccountService accountService;
     @Autowired
-    private UserService userService;
+    private CustomerService customerService;
 
     @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
     public List<Record> getRecords(){

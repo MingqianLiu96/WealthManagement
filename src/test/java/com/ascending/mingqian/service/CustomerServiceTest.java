@@ -3,8 +3,10 @@ package com.ascending.mingqian.service;
 
 import com.ascending.mingqian.init.AppInitializer;
 import com.ascending.mingqian.model.Account;
+import com.ascending.mingqian.model.Customer;
 import com.ascending.mingqian.model.Record;
-import com.ascending.mingqian.model.User;
+import com.ascending.mingqian.model.View;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -20,17 +22,17 @@ import static junit.framework.TestCase.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = AppInitializer.class)
-public class UserServiceTest {
+public class CustomerServiceTest {
     @Autowired
     private RecordService recordService;
     @Autowired
-    private UserService userService;
+    private CustomerService customerService;
     @Autowired
     private AccountService accountService;
     private static Logger logger = LoggerFactory.getLogger(RecordServiceTest.class);
     private long i;
     private long j;
-    private long userId;
+    private long customerId;
     private long accountId;
 
 
@@ -54,16 +56,16 @@ public class UserServiceTest {
     public void init() {
         logger.info("before method");
 
-        User u = new User();
+        Customer u = new Customer();
         u.setName("Garnet");
         u.setPassword("garnet");
-        userService.save(u);
-        userId = u.getId();
+        customerService.save(u);
+        customerId = u.getId();
 
         Account a1 = new Account();
         a1.setAccountType("credit");
         a1.setBalance(145);
-        a1.setUser(userService.getUserById((userId)));
+        a1.setCustomer(customerService.getCustomerById((customerId)));
         accountService.save(a1);
         accountId = a1.getId();
 
@@ -86,63 +88,66 @@ public class UserServiceTest {
     @After
     public void cleanup(){
         logger.info("after method");
-        User userGarnet = userService.getUserByName("Garnet");
-        if(userGarnet != null){
-            userService.delete(userId);
-        }
-
-        User userNancy = userService.getUserByName("Nancy");
-        if(userNancy != null){
-            userService.delete("Nancy");
-        }
-
-        User user2 = userService.getUserByName("Garnet");
-        if(user2 != null) {
-            if (!user2.getPassword().equals("garnet")) {
-                user2.setPassword("garnet");
-                userService.update(user2);
+        Customer customer2 = customerService.getCustomerByName("Garnet");
+        if(customer2 != null) {
+            if (!customer2.getPassword().equals("garnet")) {
+                customer2.setPassword("garnet");
+                customerService.update(customer2);
             }
         }
-        userService = null;
+
+        Customer customerGarnet = customerService.getCustomerByName("Garnet");
+        if(customerGarnet != null){
+            customerService.delete(customerId);
+        }
+
+        Customer customerNancy = customerService.getCustomerByName("Nancy");
+        if(customerNancy != null){
+            customerService.delete("Nancy");
+        }
+
+
+        customerService = null;
     }
 
     @Test
-    public void getUsers(){
-        List<User> users = userService.getUsers();
-        users.forEach(user -> System.out.println(user));
-        assertEquals(users.size(),1);
+    @JsonView(View.Customer.class)
+    public void getCustomers(){
+        List<Customer> customers = customerService.getCustomers();
+        customers.forEach(customer -> System.out.println(customer));
+        assertEquals(customers.size(),1);
     }
 
     @Test
-    public void getUserByName(){
+    public void getCustomerByName(){
         String name = "Garnet";
-        User user = userService.getUserByName(name);
-        System.out.println(user);
-        assertNotNull(user.getPassword());
-        assertNotNull(user.getId());
+        Customer customer = customerService.getCustomerByName(name);
+        System.out.println(customer);
+        assertNotNull(customer.getPassword());
+        assertNotNull(customer.getId());
 
     }
 
     @Test
     public void save(){
-        User user = new User();
-        user.setName("Nancy");
-        user.setPassword("nana1996");
-        userService.save(user);
-        j = user.getId();
+        Customer customer = new Customer();
+        customer.setName("Nancy");
+        customer.setPassword("nana1996");
+        customerService.save(customer);
+        j = customer.getId();
     }
 
     @Test
     public void update(){
-        User user = new User();
-        user.setId(i);
-        user.setPassword("hhhhhh");
-        userService.update(user);
+        Customer customer = new Customer();
+        customer.setId(customerId);
+        customer.setPassword("hhhhhh");
+        customerService.update(customer);
     }
 
     @Test
     public void delete(){
-        userService.delete("Garnet");
+        customerService.delete("Garnet");
     }
 
 }

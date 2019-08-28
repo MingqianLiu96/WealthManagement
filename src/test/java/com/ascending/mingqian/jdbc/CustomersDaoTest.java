@@ -1,6 +1,6 @@
 package com.ascending.mingqian.jdbc;
 
-import com.ascending.mingqian.model.User;
+import com.ascending.mingqian.model.Customer;
 import org.junit.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,10 +8,10 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 
 
-public class UsersDaoTest {
+public class CustomersDaoTest {
    // private Logger logger = LoggerFactory.getLogger(this.getClass());
-    private UsersDao usersDao;
-    private static Logger logger = LoggerFactory.getLogger(UsersDaoTest.class);
+    private CustomersDao customersDao;
+    private static Logger logger = LoggerFactory.getLogger(CustomersDaoTest.class);
 
 
     @BeforeClass
@@ -28,13 +28,13 @@ public class UsersDaoTest {
     @Before
     public void init(){
         logger.info("before method");
-        usersDao = new UsersDao();
+        customersDao = new CustomersDao();
     }
 
     @After
     public void cleanup(){
         logger.info("after method");
-        usersDao = null;
+        customersDao = null;
     }
 
 
@@ -42,10 +42,10 @@ public class UsersDaoTest {
     @Test
     public void createTest(){
 
-        User users1 = new User();
+        Customer users1 = new Customer();
         users1.setName("Nancy");
         users1.setPassword("nana1996");
-        usersDao.create(users1);
+        customersDao.create(users1);
      //   logger.debug(String.format("the user %s was inserted into the table.",users1.toString()));
      //   logger.info("test");
         //branch1
@@ -53,24 +53,24 @@ public class UsersDaoTest {
 
     @Test
     public void remove_idTest(){
-        usersDao.remove_id(Long.valueOf(1));
+        customersDao.remove_id(Long.valueOf(1));
     }
 
     @Test
     public void update_passwordTest(){
-        usersDao.update_password("mollymolly",Long.valueOf(3));
+        customersDao.update_password("mollymolly",Long.valueOf(3));
     }
 
     @Test
-    public void getUsersTest(){
+    public void getCustomersTest(){
 
-        List<User> users = usersDao.getUsers();
-        //   int expectedNumOfUsers = 5;
-        for(User u : users){
+        List<Customer> customers = customersDao.getCustomers();
+        //   int expectedNumOfCustomers = 5;
+        for(Customer u : customers){
             System.out.println(u.getId()+" "+u.getName()+" "+u.getPassword());
 
         }
-        //     Assert.assertEquals(expectedNumOfUsers,users.size());
+        //     Assert.assertEquals(expectedNumOfCustomers,customers.size());
     }
 
 

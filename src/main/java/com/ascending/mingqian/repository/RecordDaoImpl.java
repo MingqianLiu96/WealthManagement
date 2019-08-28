@@ -1,8 +1,6 @@
 package com.ascending.mingqian.repository;
 
-import com.ascending.mingqian.model.Account;
 import com.ascending.mingqian.model.Record;
-import com.ascending.mingqian.model.User;
 import com.ascending.mingqian.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -88,7 +85,7 @@ public class RecordDaoImpl implements RecordDao{
 
     @Override
     public List<Record> getRecords(){
-        String hql = "FROM Record as r left join fetch r.account left join fetch r.account.user";
+        String hql = "FROM Record as r left join fetch r.account left join fetch r.account.customer";
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Record> query = session.createQuery(hql);
             return query.list();

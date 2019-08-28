@@ -1,7 +1,7 @@
 package com.ascending.mingqian.repository;
 
 import com.ascending.mingqian.model.Account;
-import com.ascending.mingqian.model.User;
+import com.ascending.mingqian.model.Customer;
 import org.junit.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,11 +13,11 @@ import static junit.framework.TestCase.assertNotNull;
 
 public class AccountDaoTest {
     private AccountDao accountDao;
-    private UserDao userDao;
+    private CustomerDao customerDao;
     private static Logger logger = LoggerFactory.getLogger(AccountDaoTest.class);
     private long i;
     private long j ;
-    private long userId;
+    private long customerId;
 
 
     @BeforeClass
@@ -37,20 +37,20 @@ public class AccountDaoTest {
     public void init() {
         logger.info("before method");
         accountDao = new AccountDaoImpl();
-        userDao = new UserDaoImpl();
-        User u = new User();
+        customerDao = new CustomerDaoImpl();
+        Customer u = new Customer();
         u.setName("Molly");
         u.setPassword("molly");
-        userDao.save(u);
-        userId = u.getId();
+        customerDao.save(u);
+        customerId = u.getId();
 
-//        u = userDao.getUserByName(u.getName());
-//        userId = u.getId();
+//        u = customerDao.getCustomerByName(u.getName());
+//        customerId = u.getId();
 
         Account a1 = new Account();
         a1.setAccountType("credit");
         a1.setBalance(145);
-        a1.setUser(userDao.getUserById(userId));
+        a1.setCustomer(customerDao.getCustomerById(customerId));
         accountDao.save(a1);
 
         i = a1.getId();
@@ -71,15 +71,15 @@ public class AccountDaoTest {
         }
         Account a4 = accountDao.getAccountById(i);
         if(a4 != null) {
-            if (!a4.getAccountType().equals("credit") || a4.getBalance() != (double) 145 || a4.getUser().getId() != 3) {
+            if (!a4.getAccountType().equals("credit") || a4.getBalance() != (double) 145 || a4.getCustomer().getId() != 3) {
                 a4.setBalance(145);
                 a4.setAccountType("credit");
-                a4.setUser(userDao.getUserById(userId));
+                a4.setCustomer(customerDao.getCustomerById(customerId));
                 accountDao.update(a4);
             }
         }
-        userDao.delete("Molly");
-        userDao = null;
+        customerDao.delete("Molly");
+        customerDao = null;
         accountDao = null;
     }
 
@@ -94,8 +94,8 @@ public class AccountDaoTest {
     }
 
     @Test
-    public void getAccountByUserId(){
-        List<Account> a = accountDao.getAccountByUserId(userId);
+    public void getAccountByCustomerId(){
+        List<Account> a = accountDao.getAccountByCustomerId(customerId);
         assertNotNull(a.size());
     }
 
@@ -112,10 +112,10 @@ public class AccountDaoTest {
         Account account1 = new Account();
         account1.setBalance(1200);
         account1.setAccountType("Wechat Pay");
-        account1.setUser(userDao.getUserById(userId));
-//        User u = new User();
-//        u.setId(userId);
-//        account1.setUser(u);
+        account1.setCustomer(customerDao.getCustomerById(customerId));
+//        Customer u = new Customer();
+//        u.setId(customerId);
+//        account1.setCustomer(u);
         accountDao.save(account1);
         j = account1.getId();
     }
@@ -126,7 +126,7 @@ public class AccountDaoTest {
         account2.setId(i);
         account2.setBalance(1200);
         account2.setAccountType("credit");
-        account2.setUser(userDao.getUserById(userId));
+        account2.setCustomer(customerDao.getCustomerById(customerId));
         accountDao.update(account2);
     }
 

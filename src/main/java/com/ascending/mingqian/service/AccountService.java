@@ -27,7 +27,7 @@ public class AccountService {
     public Account getAccountById(Long id){
         return accountDao.getAccountById(id);
     }
-    public List<Account> getAccountByUserId(Long userId){
-        return accountDao.getAccountByUserId(userId);
+    public List<Account> getAccountByCustomerId(Long customerId){
+        return accountDao.getAccountByCustomerId(customerId);
     }
 }

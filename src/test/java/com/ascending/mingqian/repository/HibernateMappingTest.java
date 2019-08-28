@@ -1,6 +1,6 @@
 package com.ascending.mingqian.repository;
 
-import com.ascending.mingqian.model.User;
+import com.ascending.mingqian.model.Customer;
 import com.ascending.mingqian.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -16,18 +16,18 @@ public class HibernateMappingTest {
 
     @Test
     public void mappingTest() {
-        String hql = "FROM User";
-        List<User> users = null;
+        String hql = "FROM Customer";
+        List<Customer> customers = null;
 
         try(
             Session session = HibernateUtil.getSessionFactory().openSession()){
-                Query<User> query = session.createQuery(hql);
-                users = query.list();
+                Query<Customer> query = session.createQuery(hql);
+                customers = query.list();
             }
 
         catch (Exception e){
             logger.error(e.getMessage());
         }
-        Assert.assertNotNull(users);
+        Assert.assertNotNull(customers);
     }
 }

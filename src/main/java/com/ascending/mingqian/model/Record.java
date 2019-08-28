@@ -1,6 +1,7 @@
 package com.ascending.mingqian.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,18 +14,23 @@ public class Record {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private long id;
 
     @Column(name = "type")
+
     private  String type;
 
     @Column(name = "amount")
+
     private double amount;
 
     @Column(name = "date")
+
     private Date date;
 
     @Column(name = "description")
+
     private String description;
 
 //    @Column(name = "account_id")
@@ -33,6 +39,7 @@ public class Record {
     @JsonIgnore
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name= "account_id")
+
     private Account account;
 
     public long getId(){

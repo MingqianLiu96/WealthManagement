@@ -10,5 +10,5 @@ public interface AccountDao {
     boolean delete(Long id);
     List<Account> getAccounts();
     Account getAccountById(Long id);
-    List<Account> getAccountByUserId(Long userId);
+    List<Account> getAccountByCustomerId(Long customerId);
 }

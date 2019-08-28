@@ -26,7 +26,7 @@ public class AccountDao {
 
 
             String sql;
-            sql = "insert into account (balance, account_type,users_id) values " +
+            sql = "insert into account (balance, account_type,customers_id) values " +
                     "("+
                     account.getBalance()+",\'"+account.getAccountType()+"\'," +
                     ")";
@@ -152,13 +152,13 @@ public class AccountDao {
                 long id  = rs.getInt("id");
                 double balance = rs.getDouble("balance");
                 String account_type = rs.getString("account_type");
-                long users_id = rs.getInt("users_id");
+                long customers_id = rs.getInt("customers_id");
                 //Fill the object
                 Account account = new Account();
                 account.setId(id);
                 account.setBalance(balance);
                 account.setAccountType(account_type);
-                //account.setUsers_id(users_id);
+                //account.setCustomers_id(customers_id);
 
                 accountInfoList.add(account);
 
@@ -186,14 +186,14 @@ public class AccountDao {
 //        Account accountInfo1 = new Account();
 //        accountInfo1.setBalance(1200);
 //        accountInfo1.setAccountType("Wechat Pay");
-//        accountInfo1.setUsers_id(2);
+//        accountInfo1.setCustomers_id(2);
 //        accountInfoDao.create(accountInfo1);
 //
 //        List<Account> accountInfos = accountInfoDao.getAccountInfos();
 //
 //        for(Account account : accountInfos){
 //            System.out.println(account.getId()+" "+account.getBalance()+" "+
-//                    account.getAccountType()+" "+account.getUsers_id());
+//                    account.getAccountType()+" "+account.getCustomers_id());
 //
 //        }
 //    }

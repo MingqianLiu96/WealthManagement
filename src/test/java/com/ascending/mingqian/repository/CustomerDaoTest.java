@@ -2,8 +2,8 @@ package com.ascending.mingqian.repository;
 
 
 import com.ascending.mingqian.model.Account;
+import com.ascending.mingqian.model.Customer;
 import com.ascending.mingqian.model.Record;
-import com.ascending.mingqian.model.User;
 import org.junit.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,14 +13,14 @@ import java.util.List;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 
-public class UserDaoTest {
+public class CustomerDaoTest {
     private RecordDao recordDao;
-    private UserDao userDao;
+    private CustomerDao customerDao;
     private AccountDao accountDao;
     private static Logger logger = LoggerFactory.getLogger(RecordDaoTest.class);
     private long i;
     private long j;
-    private long userId;
+    private long customerId;
     private long accountId;
 
 
@@ -43,19 +43,19 @@ public class UserDaoTest {
     @Before
     public void init() {
         logger.info("before method");
-        userDao = new UserDaoImpl();
+        customerDao = new CustomerDaoImpl();
 
-        User u = new User();
+        Customer u = new Customer();
         u.setName("Garnet");
         u.setPassword("garnet");
-        userDao.save(u);
-        userId = u.getId();
+        customerDao.save(u);
+        customerId = u.getId();
 
         accountDao = new AccountDaoImpl();
         Account a1 = new Account();
         a1.setAccountType("credit");
         a1.setBalance(145);
-        a1.setUser(userDao.getUserById((userId)));
+        a1.setCustomer(customerDao.getCustomerById((customerId)));
         accountDao.save(a1);
         accountId = a1.getId();
 
@@ -79,63 +79,63 @@ public class UserDaoTest {
     @After
     public void cleanup(){
         logger.info("after method");
-        User userGarnet = userDao.getUserByName("Garnet");
-        if(userGarnet != null){
-            userDao.delete(userId);
+        Customer customerGarnet = customerDao.getCustomerByName("Garnet");
+        if(customerGarnet != null){
+            customerDao.delete(customerId);
         }
 
-        User userNancy = userDao.getUserByName("Nancy");
-        if(userNancy != null){
-            userDao.delete("Nancy");
+        Customer customerNancy = customerDao.getCustomerByName("Nancy");
+        if(customerNancy != null){
+            customerDao.delete("Nancy");
         }
 
-        User user2 = userDao.getUserByName("Garnet");
-        if(user2 != null) {
-            if (!user2.getPassword().equals("garnet")) {
-                user2.setPassword("garnet");
-                userDao.update(user2);
+        Customer customer2 = customerDao.getCustomerByName("Garnet");
+        if(customer2 != null) {
+            if (!customer2.getPassword().equals("garnet")) {
+                customer2.setPassword("garnet");
+                customerDao.update(customer2);
             }
         }
-        userDao = null;
+        customerDao = null;
     }
 
     @Test
-    public void getUsers(){
-        List<User> users = userDao.getUsers();
-        users.forEach(user -> System.out.println(user));
-        assertEquals(users.size(),1);
+    public void getCustomers(){
+        List<Customer> customers = customerDao.getCustomers();
+        customers.forEach(customer -> System.out.println(customer));
+        assertEquals(customers.size(),1);
     }
 
     @Test
-    public void getUserByName(){
+    public void getCustomerByName(){
         String name = "Garnet";
-        User user = userDao.getUserByName(name);
-        System.out.println(user);
-        assertNotNull(user.getPassword());
-        assertNotNull(user.getId());
+        Customer customer = customerDao.getCustomerByName(name);
+        System.out.println(customer);
+        assertNotNull(customer.getPassword());
+        assertNotNull(customer.getId());
 
     }
 
     @Test
     public void save(){
-        User user = new User();
-        user.setName("Nancy");
-        user.setPassword("nana1996");
-        userDao.save(user);
-        j = user.getId();
+        Customer customer = new Customer();
+        customer.setName("Nancy");
+        customer.setPassword("nana1996");
+        customerDao.save(customer);
+        j = customer.getId();
     }
 
     @Test
     public void update(){
-        User user = new User();
-        user.setId(i);
-        user.setPassword("hhhhhh");
-        userDao.update(user);
+        Customer customer = new Customer();
+        customer.setId(i);
+        customer.setPassword("hhhhhh");
+        customerDao.update(customer);
     }
 
     @Test
     public void delete(){
-        userDao.delete("Garnet");
+        customerDao.delete("Garnet");
     }
 
 }

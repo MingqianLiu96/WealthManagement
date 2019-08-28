@@ -2,10 +2,12 @@ package com.ascending.mingqian.controller;
 
 import com.ascending.mingqian.model.Account;
 
-import com.ascending.mingqian.model.User;
+import com.ascending.mingqian.model.Customer;
+import com.ascending.mingqian.model.View;
 import com.ascending.mingqian.service.AccountService;
 
-import com.ascending.mingqian.service.UserService;
+import com.ascending.mingqian.service.CustomerService;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,6 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping(value = {"/accounts","/acc"})
@@ -23,17 +24,18 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
     @Autowired
-    private UserService userService;
+    private CustomerService customerService;
 
+    @JsonView(View.Account.class)
     @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
     public List<Account> getAccounts(){
         return accountService.getAccounts();
     }
 
-    @RequestMapping(value = "/user/{userName}",method = RequestMethod.GET,produces = {MediaType.APPLICATION_JSON_VALUE})
-    public List<Account> getAccounts(@PathVariable(name = "userName") String u){
-        User user = userService.getUserByName(u);
-        List<Account> accounts = accountService.getAccountByUserId(user.getId());
+    @RequestMapping(value = "/customer/{customerName}",method = RequestMethod.GET,produces = {MediaType.APPLICATION_JSON_VALUE})
+    public List<Account> getAccounts(@PathVariable(name = "customerName") String u){
+        Customer customer = customerService.getCustomerByName(u);
+        List<Account> accounts = accountService.getAccountByCustomerId(customer.getId());
         return accounts;
     }
 
@@ -66,7 +68,7 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/{accountId}", method = RequestMethod.DELETE, consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public String deleteUser(@PathVariable(name = "accountId") Long id){
+    public String deleteCustomer(@PathVariable(name = "accountId") Long id){
         logger.debug("Account Id: " + id);
         String msg = "The account was deleted.";
 

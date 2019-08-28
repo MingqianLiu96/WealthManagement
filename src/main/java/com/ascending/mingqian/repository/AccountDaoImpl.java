@@ -105,14 +105,14 @@ public class AccountDaoImpl implements AccountDao {
     }
 
     @Override
-    public List<Account> getAccountByUserId(Long userId){
+    public List<Account> getAccountByCustomerId(Long customerId){
         //if(id == null) return null;
 
-        String hql = "FROM Account as a left join fetch a.records where a.user.id = :id";
+        String hql = "FROM Account as a left join fetch a.records where a.customer.id = :id";
 
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Account> query = session.createQuery(hql);
-            query.setParameter("id",userId);
+            query.setParameter("id",customerId);
 //
 //            Account account = query.uniqueResult();
 //            logger.debug(account.toString());
