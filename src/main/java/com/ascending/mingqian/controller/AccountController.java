@@ -19,7 +19,8 @@ import java.util.List;
 @RestController
 @RequestMapping(value = {"/accounts","/acc"})
 public class AccountController {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    @Autowired
+    private Logger logger;
 
     @Autowired
     private AccountService accountService;

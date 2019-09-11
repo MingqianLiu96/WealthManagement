@@ -17,7 +17,8 @@ import java.util.List;
 @RestController
 @RequestMapping(value = {"/records"})
 public class RecordController {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    @Autowired
+    private Logger logger;
 
     @Autowired
     private RecordService recordService;

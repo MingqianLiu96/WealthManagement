@@ -19,7 +19,8 @@ import java.util.List;
 @RestController
 @RequestMapping(value = {"/role"})
 public class RoleController {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    @Autowired
+    private Logger logger;
 
     @Autowired
     private RoleService roleService;

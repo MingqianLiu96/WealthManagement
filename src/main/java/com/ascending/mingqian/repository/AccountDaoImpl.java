@@ -16,7 +16,8 @@ import java.util.List;
 
 @Repository
 public class AccountDaoImpl implements AccountDao {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    @Autowired
+    private Logger logger;
 
     @Autowired
     private RecordDao recordDao;

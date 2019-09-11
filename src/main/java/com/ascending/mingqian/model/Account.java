@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -33,6 +36,26 @@ public class Account {
     @OneToMany(mappedBy = "account",cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
     private Set<Record> records;
 
+    @Override
+    public int hashCode(){
+        return Objects.hash(id,balance,accountType);
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(this==o) return true;
+        if(o == null || this.getClass()!=o.getClass()) return false;
+        Account account = (Account) o;
+        return id == account.id && balance == account.balance && accountType.equals(account.accountType);
+    }
+
+    public Account() {
+
+    }
+    public Account(double balance, String accountType) {
+        this.balance = balance;
+        this.accountType = accountType;
+    }
 
     public long getId() {
         return id;
@@ -110,4 +133,13 @@ public class Account {
 //                ", records=" + records +
 //                '}';
 //    }
+
+    public static void main(String[] args){
+        Account a1 = new Account(300,"credit");
+        Account a2 = new Account(500,"checking");
+        Map<Account,Integer> map = new HashMap<>();
+        map.put(a1,35);
+        map.put(a2,36);
+        System.out.println(map.size());
+    }
 }

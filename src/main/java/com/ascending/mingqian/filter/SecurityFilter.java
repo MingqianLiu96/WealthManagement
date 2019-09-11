@@ -3,6 +3,8 @@ import com.ascending.mingqian.util.JwtUtil;
 import io.jsonwebtoken.Claims;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 @WebFilter(filterName = "securityFilter", urlPatterns = {"/*"}, dispatcherTypes = {DispatcherType.REQUEST})
 public class SecurityFilter implements Filter {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    @Autowired
+    private Logger logger;
+
     private static String AUTH_URI = "/auth";
     @Override
     public void init(FilterConfig filterConfig) {
@@ -44,7 +48,8 @@ public class SecurityFilter implements Filter {
                 case "DELETE" : allowedResources = (String)claims.get("allowedDeleteResources"); break;
             }
             for (String s : allowedResources.split(",")) {
-                if (!s.trim().matches("^/")) continue;
+                if (!s.trim().startsWith("/")) continue;
+                //if (!s.trim().matches("/*.")) continue;
                 if (uri.trim().toLowerCase().startsWith(s.trim().toLowerCase())) {
                     statusCode = HttpServletResponse.SC_ACCEPTED;
                     break;
