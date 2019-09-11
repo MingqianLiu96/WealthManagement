@@ -1,21 +1,22 @@
 package com.ascending.mingqian.jdbc;
 
+import com.ascending.mingqian.model.Customer;
 
-import com.ascending.mingqian.model.Record;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
-
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class RecordDao {
+public class CustomersDao {
     //STEP 1: Database information
     static final String DB_URL = "jdbc:postgresql://localhost:5432/accounting";
     static final String USER = "admin";
     static final String PASS = "molly";
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public Record create(Record record){
+    public Customer create(Customer customers){
 
         Connection conn = null;
         Statement stmt = null;
@@ -30,14 +31,12 @@ public class RecordDao {
 
 
             String sql;
-            sql = "insert into record (type,amount, date, description, account_id) values " +
+            sql = "insert into customers (name, password) values " +
                     "(\'"+
-                    record.getType()+"\',"+record.getAmount()+",\'"+record.getDate()+"\',\'"+record.getDescription()+"\'," +
-                    ")";
+                    customers.getName()+"\',\'"+customers.getPassword()+
+                    "\')";
 
             stmt.executeUpdate(sql);
-
-
 
         }
         catch(Exception e){
@@ -56,7 +55,7 @@ public class RecordDao {
         }
 
 
-        return record;
+        return customers;
     }
 
     public void remove_id(long id){
@@ -73,13 +72,15 @@ public class RecordDao {
             stmt = conn.createStatement();
 
 
-            String sql;
-            sql = "delete from record where id = " + id;
+            String sql1,sql2,sql3;
+            sql1 = "delete from record where record.account_id in " +
+                    "(select id from account where account.customers_id = "+id+")";
+            sql2 = "delete from account where account.customers_id = "+id;
+            sql3 = "delete from customers where customers.id = "+ id;
 
-
-            stmt.executeUpdate(sql);
-
-
+            stmt.executeUpdate(sql1);
+            stmt.executeUpdate(sql2);
+            stmt.executeUpdate(sql3);
 
         }
         catch(Exception e){
@@ -99,7 +100,7 @@ public class RecordDao {
 
     }
 
-    public void update_amount(double a,long id){
+    public void update_password(String p,long id){
         Connection conn = null;
         Statement stmt = null;
 
@@ -113,7 +114,7 @@ public class RecordDao {
 
 
             String sql;
-            sql = "update record set amount = \'"+ a +
+            sql = "update customers set password = \'"+ p +
                     " \' where id = "+id;
 
             stmt.executeUpdate(sql);
@@ -134,77 +135,92 @@ public class RecordDao {
         }
     }
 
+    public List<Customer> getCustomers(){
+        logger.info("Enter the method getCustomers.");
 
-    public List<Record> getRecords() {
-        List<Record> recordList = new ArrayList();
+        List<Customer> customerList = new ArrayList();
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
-        try {
+
+        try{
             //STEP 2: Open a connection
             System.out.println("Connecting to database...");
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+
             //STEP 3: Execute a query
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
-            sql = "SELECT * FROM record";
+            sql = "select * from Customers";
             rs = stmt.executeQuery(sql);
+
             //STEP 4: Extract data from result set
-            while (rs.next()) {
+            while(rs.next()){
                 //Retrieve by column name
                 long id = rs.getInt("id");
-                String type = rs.getString("type");
-                double amount = rs.getDouble("amount");
-                Date date = rs.getDate("date");
-                String description = rs.getString("description");
-                long account_id = rs.getInt("account_id");
-                //Fill the object
-                Record record = new Record();
-                record.setId(id);
-                record.setType(type);
-                record.setAmount(amount);
-                record.setDate(date);
-                record.setDescription(description);
-               // record.setAccount_id(account_id);
+                String name = rs.getString("name");
+                String password = rs.getString("password");
 
-                recordList.add(record);
+                //Fill the object
+                Customer customer = new Customer();
+                customer.setId(id);
+                customer.setName(name);
+                customer.setPassword(password);
+
+                customerList.add(customer);
 
             }
-        } catch (Exception e) {
+
+
+        }
+        catch(Exception e){
+            logger.error(e.getMessage());
             e.printStackTrace();
-        } finally {
+        }
+        finally {
             //STEP 6: finally block used to close resources
             try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
+                if(rs != null) rs.close();
+                if(stmt != null) stmt.close();
+                if(conn != null) conn.close();
+            }
+            catch(SQLException se) {
                 se.printStackTrace();
             }
         }
-        return recordList;
+
+        logger.trace("Trace"+ customerList.size());
+        logger.debug("Debug"+ customerList.size());
+        logger.info("Info"+ customerList.size());
+        logger.warn("Warn"+ customerList.size());
+        logger.error("Error"+ customerList.size());
+
+        logger.info("Exit the method getCustomers.");
+
+
+        return customerList;
+
+
+
     }
 
-//    public static void main(String[] args) {
-//        RecordDao recordDao = new RecordDao();
+
+//    public static void main(String[] args){
+//        CustomersDao customersDao = new CustomersDao();
 //
-//        Record record1 = new Record();
-//        record1.setType("rent");
-//        record1.setAmount(3300);
-//        long time = System.currentTimeMillis();
-//        java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
-//        record1.setDate(timestamp);
-//        record1.setDescription("three months rent for agent");
-//        record1.setAccount_id(8);
-//        recordDao.create(record1);
+//        Customers customers1 = new Customers();
+//        customers1.setName("Nancy");
+//        customers1.setPassword("nana1996");
+//        customersDao.create(customers1);
 //
-//        List<Record> records = recordDao.getRecords();
+//        customersDao.remove_id(1);
+//        customersDao.update_password("molly1996",3);
 //
-//        for (Record record : records) {
-//            System.out.println(record.getId() + " " + record.getType() + " " +
-//                    record.getAmount() + " " + record.getDate()+" "+record.getDescription()+" "+
-//                    record.getAccount_id());
+//        List<Customers> customers = customersDao.getCustomers();
+//
+//        for(Customers u : customers){
+//            System.out.println(u.getId()+" "+u.getName()+" "+u.getPassword());
 //
 //        }
 //    }

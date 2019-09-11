@@ -1,21 +1,17 @@
 package com.ascending.mingqian.jdbc;
 
-
-import com.ascending.mingqian.model.Record;
+import com.ascending.mingqian.model.Account;
 
 import java.sql.*;
-
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class RecordDao {
+public class AccountDao {
     //STEP 1: Database information
     static final String DB_URL = "jdbc:postgresql://localhost:5432/accounting";
     static final String USER = "admin";
     static final String PASS = "molly";
-
-    public Record create(Record record){
+    public Account create(Account account){
 
         Connection conn = null;
         Statement stmt = null;
@@ -30,9 +26,9 @@ public class RecordDao {
 
 
             String sql;
-            sql = "insert into record (type,amount, date, description, account_id) values " +
-                    "(\'"+
-                    record.getType()+"\',"+record.getAmount()+",\'"+record.getDate()+"\',\'"+record.getDescription()+"\'," +
+            sql = "insert into account (balance, account_type,customers_id) values " +
+                    "("+
+                    account.getBalance()+",\'"+account.getAccountType()+"\'," +
                     ")";
 
             stmt.executeUpdate(sql);
@@ -56,7 +52,7 @@ public class RecordDao {
         }
 
 
-        return record;
+        return account;
     }
 
     public void remove_id(long id){
@@ -73,12 +69,13 @@ public class RecordDao {
             stmt = conn.createStatement();
 
 
-            String sql;
-            sql = "delete from record where id = " + id;
+            String sql1,sql2;
+            sql1 = "delete from record where record.account_id = " + id;
+            sql2 = "delete from account where id = "+id;
 
 
-            stmt.executeUpdate(sql);
-
+            stmt.executeUpdate(sql1);
+            stmt.executeUpdate(sql2);
 
 
         }
@@ -99,7 +96,7 @@ public class RecordDao {
 
     }
 
-    public void update_amount(double a,long id){
+    public void update_balance(double b,long id){
         Connection conn = null;
         Statement stmt = null;
 
@@ -113,7 +110,7 @@ public class RecordDao {
 
 
             String sql;
-            sql = "update record set amount = \'"+ a +
+            sql = "update account set balance = \'"+ b +
                     " \' where id = "+id;
 
             stmt.executeUpdate(sql);
@@ -134,9 +131,8 @@ public class RecordDao {
         }
     }
 
-
-    public List<Record> getRecords() {
-        List<Record> recordList = new ArrayList();
+    public List<Account> getAccountInfos() {
+        List<Account> accountInfoList = new ArrayList();
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
@@ -148,64 +144,58 @@ public class RecordDao {
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
-            sql = "SELECT * FROM record";
+            sql = "SELECT * FROM account";
             rs = stmt.executeQuery(sql);
             //STEP 4: Extract data from result set
-            while (rs.next()) {
+            while(rs.next()) {
                 //Retrieve by column name
-                long id = rs.getInt("id");
-                String type = rs.getString("type");
-                double amount = rs.getDouble("amount");
-                Date date = rs.getDate("date");
-                String description = rs.getString("description");
-                long account_id = rs.getInt("account_id");
+                long id  = rs.getInt("id");
+                double balance = rs.getDouble("balance");
+                String account_type = rs.getString("account_type");
+                long customers_id = rs.getInt("customers_id");
                 //Fill the object
-                Record record = new Record();
-                record.setId(id);
-                record.setType(type);
-                record.setAmount(amount);
-                record.setDate(date);
-                record.setDescription(description);
-               // record.setAccount_id(account_id);
+                Account account = new Account();
+                account.setId(id);
+                account.setBalance(balance);
+                account.setAccountType(account_type);
+                //account.setCustomers_id(customers_id);
 
-                recordList.add(record);
+                accountInfoList.add(account);
 
             }
-        } catch (Exception e) {
+        }
+        catch(Exception e){
             e.printStackTrace();
-        } finally {
+        }
+        finally {
             //STEP 6: finally block used to close resources
             try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
+                if(rs != null) rs.close();
+                if(stmt != null) stmt.close();
+                if(conn != null) conn.close();
+            }
+            catch(SQLException se) {
                 se.printStackTrace();
             }
         }
-        return recordList;
+        return accountInfoList;
     }
-
-//    public static void main(String[] args) {
-//        RecordDao recordDao = new RecordDao();
+//    public static void main(String[] args){
+//        AccountDao accountInfoDao = new AccountDao();
 //
-//        Record record1 = new Record();
-//        record1.setType("rent");
-//        record1.setAmount(3300);
-//        long time = System.currentTimeMillis();
-//        java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
-//        record1.setDate(timestamp);
-//        record1.setDescription("three months rent for agent");
-//        record1.setAccount_id(8);
-//        recordDao.create(record1);
+//        Account accountInfo1 = new Account();
+//        accountInfo1.setBalance(1200);
+//        accountInfo1.setAccountType("Wechat Pay");
+//        accountInfo1.setCustomers_id(2);
+//        accountInfoDao.create(accountInfo1);
 //
-//        List<Record> records = recordDao.getRecords();
+//        List<Account> accountInfos = accountInfoDao.getAccountInfos();
 //
-//        for (Record record : records) {
-//            System.out.println(record.getId() + " " + record.getType() + " " +
-//                    record.getAmount() + " " + record.getDate()+" "+record.getDescription()+" "+
-//                    record.getAccount_id());
+//        for(Account account : accountInfos){
+//            System.out.println(account.getId()+" "+account.getBalance()+" "+
+//                    account.getAccountType()+" "+account.getCustomers_id());
 //
 //        }
 //    }
+
 }

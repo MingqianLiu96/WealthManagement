@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.ascending.mingqian.jdbc.UsersDaoTest
--------------------------------------------------------------------------------
-Tests run: 2, Failures: 1, Errors: 0, Skipped: 1, Time elapsed: 0.406 s <<< FAILURE! - in com.ascending.mingqian.jdbc.UsersDaoTest
-getUsersTest(com.ascending.mingqian.jdbc.UsersDaoTest)  Time elapsed: 0.336 s  <<< FAILURE!
-java.lang.AssertionError: expected:<4> but was:<12>
-	at com.ascending.mingqian.jdbc.UsersDaoTest.getUsersTest(UsersDaoTest.java:33)
-
