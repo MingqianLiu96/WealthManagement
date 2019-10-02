@@ -51,15 +51,35 @@ public class FileServiceTest {
 
     @Test
     public void creatBucket(){
-        fileService.createBucket("mingqian1996");
+        fileService.createBucket("mingqian");
     }
 
+    @Test
+    public void listBucket(){ fileService.listBucket();}
+
+    @Test
+    public void deleteBucket(){ fileService.deleteBucket(bucketName);}
 
     @Test
      public void uploadFile() throws IOException{
          String fileUrl = fileService.uploadFile(bucketName, multipartFile);
             Assert.assertNotNull(fileUrl);
         }
+
+     @Test
+     public void listObject() {
+        fileService.listObject(bucketName);
+     }
+
+     @Test
+     public void deleteObject() {
+        fileService.deleteObject(bucketName,"test.txt");
+     }
+
+     @Test
+     public void downloadObject(){
+        fileService.downloadObject(bucketName,"test.txt");
+     }
 
     @Test
     public void getFileUrl() throws IOException, FileNotFoundException{

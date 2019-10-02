@@ -31,6 +31,22 @@ public class MessageService {
         return queueUrl;
     }
 
+    public void listQueue(){
+        ListQueuesResult lq_result = amazonSQS.listQueues();
+        System.out.println("Your SQS Queue URLs:");
+            for (String url : lq_result.getQueueUrls()) {
+                System.out.println(url);
+            }
+
+
+
+    }
+
+    public void deleteQueue(String queueName){
+        String queue_url = getQueueUrl(queueName);
+        amazonSQS.deleteQueue(queue_url);
+    }
+
     public String getQueueUrl(String queueName){
         return amazonSQS.getQueueUrl(queueName).getQueueUrl();
     }
@@ -53,6 +69,19 @@ public class MessageService {
                 .withMessageBody(msg)
                 .withMessageAttributes(messageAttributes);
         amazonSQS.sendMessage(sendMessageRequest);
+    }
+
+    public void deleteMessage(String queueName) {
+        String queueUrl = getQueueUrl(queueName);
+
+            // receive messages from the queue
+            List<Message> messages = amazonSQS.receiveMessage(queueUrl).getMessages();
+
+            // delete messages from the queue
+//            for (Message m : messages) {
+//               amazonSQS.deleteMessage(queueUrl, m.getReceiptHandle());
+//            }
+
     }
 
 }

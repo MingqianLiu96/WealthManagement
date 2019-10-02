@@ -16,9 +16,10 @@ import java.time.format.DateTimeFormatter;
 
 @WebFilter(filterName = "LogFilter", urlPatterns = {"/*"}, dispatcherTypes = {DispatcherType.REQUEST})
 public class LogFilter implements Filter {
-    @Autowired
-    private Logger logger;
+//    @Autowired
+//    private Logger logger;
    // private static String LOG_URI = "/log";
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
     public void init(FilterConfig filterConfig){

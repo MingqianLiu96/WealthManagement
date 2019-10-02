@@ -12,6 +12,8 @@
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
+  <packaging>war</packaging>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -19,6 +21,7 @@
     <!--    1.insert flyway version-->
     <flyway.version>6.0.0-beta2</flyway.version>
     <org.slf4j-version>1.7.26</org.slf4j-version>
+    <mockito.version>3.0.0</mockito.version>
   </properties>
 
   <parent>
@@ -93,6 +96,13 @@
         <artifactId>aws-java-sdk</artifactId>
         <version>1.11.592</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+
 
 
   </dependencies>

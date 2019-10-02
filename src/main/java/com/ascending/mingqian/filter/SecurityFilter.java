@@ -12,8 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 @WebFilter(filterName = "securityFilter", urlPatterns = {"/*"}, dispatcherTypes = {DispatcherType.REQUEST})
 public class SecurityFilter implements Filter {
-    @Autowired
-    private Logger logger;
+//    @Autowired
+//    private Logger logger;
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private static String AUTH_URI = "/auth";
     @Override
