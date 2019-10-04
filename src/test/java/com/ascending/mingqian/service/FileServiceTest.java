@@ -46,12 +46,17 @@ public class FileServiceTest {
 
     @After
     public void tearDown(){
-         logger.info(">>>>>>>>>>>>>> End test");
+        if(fileService.isExistBucket("mingqian") == false) {
+            fileService.createBucket("mingqian");
+        }
+        logger.info(">>>>>>>>>>>>>> End test");
         }
 
     @Test
     public void creatBucket(){
-        fileService.createBucket("mingqian");
+        if(fileService.isExistBucket("mingqian") == false) {
+            fileService.createBucket("mingqian");
+        }
     }
 
     @Test
@@ -66,20 +71,20 @@ public class FileServiceTest {
             Assert.assertNotNull(fileUrl);
         }
 
-     @Test
-     public void listObject() {
-        fileService.listObject(bucketName);
-     }
+//     @Test
+//     public void listObject() {
+//        fileService.listObject(bucketName);
+//     }
 
-     @Test
-     public void deleteObject() {
-        fileService.deleteObject(bucketName,"test.txt");
-     }
+//     @Test
+//     public void deleteObject() {
+//        fileService.deleteObject(bucketName,"test.txt");
+//     }
 
-     @Test
-     public void downloadObject(){
-        fileService.downloadObject(bucketName,"test.txt");
-     }
+//     @Test
+//     public void downloadObject(){
+//        fileService.downloadObject(bucketName,"test.txt");
+//     }
 
     @Test
     public void getFileUrl() throws IOException, FileNotFoundException{

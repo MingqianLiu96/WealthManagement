@@ -43,24 +43,24 @@ public class MessageServiceTest {
         logger.info(">>>>>>>>>>>>>> End test");
     }
 
-    @Test
-    public void createQueue(){
-        messageService.createQueue("mingqian96");
-    }
-
+//    @Test
+//    public void createQueue(){
+//        messageService.createQueue("mingqian96");
+//    }
+//
     @Test
     public  void listQueue(){
         messageService.listQueue();
     }
-
-    @Test
-    public void deleteQueue(){
-        messageService.deleteQueue("mingqian96");
-    }
-
-    @Test
-    public void deleteMessage(){
-        messageService.deleteMessage(queueName);
-    }
+//
+//    @Test
+//    public void deleteQueue(){
+//        messageService.deleteQueue("mingqian96");
+//    }
+//
+//    @Test
+//    public void deleteMessage(){
+//        messageService.deleteMessage(queueName);
+//    }
 
 }

@@ -88,7 +88,7 @@ public class MessageServiceMockAWSTest {
 
         messageService.deleteMessage(anyString());
 
-        verify(amazonSQS, times(2)).receiveMessage(anyString()).getMessages();
+        verify(amazonSQS, times(2)).receiveMessage(anyString());
         //verify(amazonSQS, times(1)).receiveMessage(queueUrl).getMessages();
        // verify(amazonSQS, times(1)).deleteMessage(anyString(),anyString());
     }

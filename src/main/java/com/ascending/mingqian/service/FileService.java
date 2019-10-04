@@ -38,6 +38,16 @@ public class FileService {
             amazonS3.createBucket(bucketName);
     }
 
+    public boolean isExistBucket(String bucketName){
+
+        if(amazonS3.doesBucketExistV2(bucketName)){
+            return true;
+        }
+        else
+            return false;
+
+    }
+
     public void listBucket() {
         amazonS3 = AmazonS3ClientBuilder.standard().withRegion(Regions.DEFAULT_REGION).build();
         List<Bucket> buckets = amazonS3.listBuckets();

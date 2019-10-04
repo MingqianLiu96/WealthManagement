@@ -72,12 +72,12 @@ public class Customer {
     }
 
     public Set<Account> getAccounts() {
-//        try{
-//            int size = accounts.size();
-//        }
-//        catch (Exception e){
-//            return null;
-//        }
+        try{
+            int size = accounts.size();
+        }
+        catch (Exception e){
+            return null;
+        }
 
             return accounts;
     }

@@ -62,48 +62,18 @@ public class CustomerServiceTest {
         customerService.save(u);
         customerId = u.getId();
 
-        Account a1 = new Account();
-        a1.setAccountType("credit");
-        a1.setBalance(145);
-        a1.setCustomer(customerService.getCustomerById((customerId)));
-        accountService.save(a1);
-        accountId = a1.getId();
-
-        Record r1 = new Record();
-        r1.setType("rent");
-        r1.setAmount(3300);
-        long time = System.currentTimeMillis();
-        java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
-        r1.setDate(timestamp);
-        r1.setDescription("three months rent for agent");
-        //r1.setAccount(accountService.getAccountById(accountId));
-        Account a = new Account();
-        a.setId(accountId);
-        r1.setAccount(a);
-        System.out.println(r1);
-        recordService.save(r1);
-        i = r1.getId();
 
     }
     @After
     public void cleanup(){
         logger.info("after method");
-        Customer customer2 = customerService.getCustomerByName("Garnet");
-        if(customer2 != null) {
-            if (!customer2.getPassword().equals("garnet")) {
-                customer2.setPassword("garnet");
-                customerService.update(customer2);
-            }
-        }
-
-        Customer customerGarnet = customerService.getCustomerByName("Garnet");
-        if(customerGarnet != null){
+        Customer u = customerService.getCustomerById(customerId);
+        if(u != null) {
             customerService.delete(customerId);
         }
-
-        Customer customerNancy = customerService.getCustomerByName("Nancy");
-        if(customerNancy != null){
-            customerService.delete("Nancy");
+        Customer u2 = customerService.getCustomerById(j);
+        if(u2 != null) {
+            customerService.delete(j);
         }
 
 
@@ -115,7 +85,7 @@ public class CustomerServiceTest {
     public void getCustomers(){
         List<Customer> customers = customerService.getCustomers();
         customers.forEach(customer -> System.out.println(customer));
-        assertEquals(customers.size(),1);
+        assertEquals(customers.size(),5);
     }
 
     @Test
@@ -147,7 +117,7 @@ public class CustomerServiceTest {
 
     @Test
     public void delete(){
-        customerService.delete("Garnet");
+        customerService.delete(customerId);
     }
 
 }

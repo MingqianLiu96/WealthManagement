@@ -157,9 +157,9 @@
           <version>${flyway.version}</version>
           <configuration>
             <driver>org.postgresql.Driver</driver>
-            <url>jdbc:postgresql://localhost:5432/accounting</url>
-            <user>admin</user>
-            <password>molly</password>
+            <url>jdbc:postgresql://${db_url}</url>
+            <user>${db_user}</user>
+            <password>${db_password}</password>
             <schemas>
               <schema>public</schema>
             </schemas>
